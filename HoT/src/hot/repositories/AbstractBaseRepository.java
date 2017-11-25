@@ -5,33 +5,33 @@
  */
 package hot.repositories;
 
-import java.awt.List;
 import java.util.ArrayList;
 
 /**
  *
  * @author joao
+ * @param <T>
  */
 public abstract class AbstractBaseRepository<T> {
-    
+
     private ArrayList<T> repository;
-    
+
     public boolean add(T object) {
         repository.add(object);
         return exists(object);
     }
-    
-    public boolean remove(T object){
+
+    public boolean remove(T object) {
         repository.remove(object);
         return !exists(object);
     }
-    
-    public boolean exists(T object){
+
+    public boolean exists(T object) {
         return repository.contains(object);
-    }        
-    
+    }
+
     public ArrayList<T> retrieveAll() {
         return repository;
     }
-    
+
 }
