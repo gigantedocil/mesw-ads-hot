@@ -6,9 +6,7 @@
 package hot;
 
 import gui.Home;
-import hot.domain.entities.device.Device;
 import java.awt.EventQueue;
-import java.util.ArrayList;
 
 /**
  *
@@ -29,12 +27,6 @@ public class Hot {
         }
     }
 
-    private void initialize() {
-        EventQueue.invokeLater(() -> {
-            new Home().setVisible(true);
-        });
-    }
-
     private boolean setLookAndFeel() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -48,5 +40,11 @@ public class Hot {
             return false;
         }
         return true;
-    }   
+    }
+
+    private void initialize() {
+        EventQueue.invokeLater(() -> {
+            new Home().setVisible(true);
+        });
+    }
 }

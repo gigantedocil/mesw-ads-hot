@@ -18,9 +18,6 @@ public abstract class Device extends Observable {
     private boolean isOn;
 
     public final void init() {
-//       addObserver(LogFileLogger.getInstance());
-//       addObserver(CsvFileLogger.getInstance());
-//       addObserver(TxtFileLogger.getInstance());        
     }
 
     public boolean isOn() {
@@ -29,7 +26,7 @@ public abstract class Device extends Observable {
 
     public void setIsOn(boolean isOn) {
         this.isOn = isOn;
-        
+
         notifyDevice();
     }
 
@@ -46,5 +43,5 @@ public abstract class Device extends Observable {
 
     public void setName(String name) {
         this.name = name;
-    }        
+    }
 }

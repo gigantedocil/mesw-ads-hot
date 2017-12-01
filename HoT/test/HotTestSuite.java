@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import hot.bootstrapper.HotBootstrapperTest;
 import hot.device.DeviceFactoryTest;
 import hot.device.DeviceRepositoryTest;
 import hot.device.DeviceTest;
@@ -24,7 +25,8 @@ import org.junit.runners.Suite;
     DeviceTest.class,
     DeviceFactoryTest.class,
     DeviceRepositoryTest.class,
-    LoggerTest.class        
+    LoggerTest.class,
+    HotBootstrapperTest.class
 })
 public class HotTestSuite {
 
@@ -43,5 +45,4 @@ public class HotTestSuite {
     @After
     public void tearDown() throws Exception {
     }
-    
 }

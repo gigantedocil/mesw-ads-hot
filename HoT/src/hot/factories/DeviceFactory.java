@@ -21,7 +21,7 @@ public class DeviceFactory {
         try {
             return (Device) Class.forName(
                     Device.class.getPackage().getName()
-                    + "."
+                    + ".concretedevices."
                     + deviceName
             ).newInstance();
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {

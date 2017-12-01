@@ -10,5 +10,4 @@ package hot.domain.entities.device;
  * @author joao
  */
 public class NullDevice extends Device {
-    
 }

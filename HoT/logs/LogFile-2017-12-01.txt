@@ -33,3 +33,9 @@ Timestamp: Fri Dec 01 20:30:56 GMT 2017; Message: Testing this test for testing 
 Timestamp: Fri Dec 01 20:31:58 GMT 2017; Message: Heater Aquecedor Quentinho da Sala is on;
 Timestamp: Fri Dec 01 20:31:58 GMT 2017; Message: Heater Aquecedor Quentinho da Sala is off;
 Timestamp: Fri Dec 01 20:31:58 GMT 2017; Message: Testing this test for testing purposes;
+Timestamp: Fri Dec 01 21:57:38 GMT 2017; Message: Heater Aquecedor Quentinho da Sala is on;
+Timestamp: Fri Dec 01 21:57:38 GMT 2017; Message: Heater Aquecedor Quentinho da Sala is off;
+Timestamp: Fri Dec 01 21:57:38 GMT 2017; Message: Testing this test for testing purposes;
+Timestamp: Fri Dec 01 22:54:19 GMT 2017; Message: Heater Aquecedor Quentinho da Sala is on;
+Timestamp: Fri Dec 01 22:54:19 GMT 2017; Message: Heater Aquecedor Quentinho da Sala is off;
+Timestamp: Fri Dec 01 22:54:19 GMT 2017; Message: Testing this test for testing purposes;
