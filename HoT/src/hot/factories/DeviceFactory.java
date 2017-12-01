@@ -14,12 +14,16 @@ import hot.domain.entities.device.NullDevice;
  */
 public class DeviceFactory {
 
-    public static Device create(String deviceType) {
+    public static Device create(String deviceName) {
 
         Device device = new NullDevice();
 
         try {
-            return (Device) Class.forName("hot.domain.entities." + deviceType).newInstance();
+            return (Device) Class.forName(
+                    Device.class.getPackage().getName()
+                    + "."
+                    + deviceName
+            ).newInstance();
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             // TODO: Add to logger.
         }

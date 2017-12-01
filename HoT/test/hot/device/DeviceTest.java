@@ -6,7 +6,6 @@
 package hot.device;
 
 import hot.domain.entities.device.Device;
-import hot.domain.entities.device.Heater;
 import hot.factories.DeviceFactory;
 import hot.logger.CsvFileLogger;
 import hot.logger.LogFileLogger;
@@ -46,13 +45,13 @@ public class DeviceTest {
     public void addDeviceObserverTest() {
 
         Device heater = DeviceFactory.create("Heater");
-        
+
         heater.setName("Aquecedor Quentinho da Sala");
 
         heater.addObserver(LogFileLogger.getInstance());
-        
-        heater.addObserver(CsvFileLogger.getInstance());       
-        
+
+        heater.addObserver(CsvFileLogger.getInstance());
+
         heater.addObserver(TxtFileLogger.getInstance());
 
         heater.setIsOn(true);
