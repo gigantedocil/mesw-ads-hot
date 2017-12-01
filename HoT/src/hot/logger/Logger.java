@@ -17,39 +17,32 @@ import java.util.Date;
  *
  * @author joao
  */
-public class OurLogsSerializer {
+public class Logger {
 
     protected String filePath;
-    final String logName = "LogFile";
+    private final String logName = "LogFile";
     private Date currentDate;
     private FileWriter out;
     private File folder;
 
-    /**
-     * Constructor
-     *
-     * @param filePath
-     */
-    public OurLogsSerializer(String filePath) {
+    private static Logger instance;
 
-        this.filePath = filePath;
-        this.folder = this.createOrReadLogFolder(this.filePath);
-        try {
-            this.createNewFileStream(new Date());
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static Logger getInstance() {
+        if (instance == null) {
+            instance = new Logger();
         }
+        return instance;
     }
 
     /**
      * Constructor
      */
-    public OurLogsSerializer() {
+    Logger() {                
 
-        this.filePath = System.getProperty("user.dir");
-        this.folder = this.createOrReadLogFolder(this.filePath);
+        folder = this.createOrReadLogFolder(System.getProperty("user.dir"));
+
         try {
-            this.createNewFileStream(new Date());
+            createNewFileStream(new Date());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -63,14 +56,15 @@ public class OurLogsSerializer {
      */
     private void createNewFileStream(Date newDate) throws IOException {
 
-        this.currentDate = newDate;
-        if (this.out != null) {
-            this.out.close();
+        currentDate = newDate;
+
+        if (out != null) {
+            out.close();
         }
 
-        File logFile = this.getOrCreateFileForDate(this.currentDate, this.folder);
+        File logFile = this.getOrCreateFileForDate(currentDate, folder);
 
-        this.out = this.openStream(logFile);
+        out = openStream(logFile);
     }
 
     /**
@@ -81,13 +75,23 @@ public class OurLogsSerializer {
     public void log(String message) {
 
         Date todaysDate = new Date();
-        try {
-            if (!this.isDateToday(this.currentDate, todaysDate)) {
 
-                this.createNewFileStream(todaysDate);
+        try {
+
+            if (!isDateToday(currentDate, todaysDate)) {
+
+                createNewFileStream(todaysDate);
             }
 
-            this.out.write(message + "\n");
+            out.write(
+                    "Timestamp: "
+                    + currentDate.toString()                    
+                    + "; Message: "        
+                    + message
+                    + ";\n"
+            );
+
+            out.close();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -102,7 +106,6 @@ public class OurLogsSerializer {
      * @throws IOException
      */
     private FileWriter openStream(File logFile) throws IOException {
-
         return new FileWriter(logFile, true);
     }
 
@@ -183,10 +186,7 @@ public class OurLogsSerializer {
 
         Date dateFromFileReseted = dateFromFileCalendar.getTime();
 
-        if (dateFromFileReseted.equals(todayDateReseted)) {
-            return true;
-        }
-        return false;
+        return dateFromFileReseted.equals(todayDateReseted);
     }
 
 }

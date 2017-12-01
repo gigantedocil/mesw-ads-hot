@@ -6,10 +6,9 @@
 package hot;
 
 import gui.Home;
-import hot.domain.entities.devicedecorators.ActuatorDecorator;
 import hot.domain.entities.Device;
-import hot.domain.entities.LightBulb;
-import hot.domain.entities.devicedecorators.SensorDecorator;
+import hot.logger.Logger;
+import java.awt.EventQueue;
 import java.util.ArrayList;
 
 /**
@@ -23,16 +22,19 @@ public class HoT {
      */
     public static void main(String args[]) {
         new HoT();
+        
+        //Logger
     }
 
     public HoT() {
-        if (setLookAndFeel()) {
-            initialize();
-        }
+        //Logger logger = Logger.getInstance();
+//        if (setLookAndFeel()) {
+//            initialize();
+//        }
     }
 
     private void initialize() {
-        java.awt.EventQueue.invokeLater(() -> {
+        EventQueue.invokeLater(() -> {
             new Home().setVisible(true);
         });
     }
