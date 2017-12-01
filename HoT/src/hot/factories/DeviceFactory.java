@@ -19,7 +19,7 @@ public class DeviceFactory {
         Device device = new NullDevice();
 
         try {
-            return (Device) Class.forName("hot.domain.entities" + deviceType).newInstance();
+            return (Device) Class.forName("hot.domain.entities." + deviceType).newInstance();
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             // TODO: Add to logger.
         }

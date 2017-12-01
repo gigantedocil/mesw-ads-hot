@@ -1,0 +1,18 @@
+Timestamp: Fri Dec 01 14:29:10 WET 2017; Message: Heater Aquecedor quentinho is on;
+Timestamp: Fri Dec 01 14:29:10 WET 2017; Message: Heater Aquecedor quentinho is off;
+Timestamp: Fri Dec 01 14:50:15 WET 2017; Message: hot.domain.entities.NullDevice@368102c8 is on;
+Timestamp: Fri Dec 01 14:50:15 WET 2017; Message: hot.domain.entities.NullDevice@368102c8 is off;
+Timestamp: Fri Dec 01 14:52:35 WET 2017; Message: hot.domain.entities.NullDevice@528931cf is on;
+Timestamp: Fri Dec 01 14:52:35 WET 2017; Message: hot.domain.entities.NullDevice@528931cf is off;
+Timestamp: Fri Dec 01 14:53:01 WET 2017; Message: hot.domain.entities.NullDevice@368102c8 is on;
+Timestamp: Fri Dec 01 14:53:01 WET 2017; Message: hot.domain.entities.NullDevice@368102c8 is off;
+Timestamp: Fri Dec 01 14:56:00 WET 2017; Message: hot.domain.entities.NullDevice@305fd85d is on;
+Timestamp: Fri Dec 01 14:56:00 WET 2017; Message: hot.domain.entities.NullDevice@305fd85d is off;
+Timestamp: Fri Dec 01 14:56:23 WET 2017; Message: hot.domain.entities.NullDevice@528931cf is on;
+Timestamp: Fri Dec 01 14:56:23 WET 2017; Message: hot.domain.entities.NullDevice@528931cf is off;
+Timestamp: Fri Dec 01 14:57:40 WET 2017; Message: hot.domain.entities.NullDevice@528931cf is on;
+Timestamp: Fri Dec 01 14:57:40 WET 2017; Message: hot.domain.entities.NullDevice@528931cf is off;
+Timestamp: Fri Dec 01 14:58:10 WET 2017; Message: Heater null is on;
+Timestamp: Fri Dec 01 14:58:10 WET 2017; Message: Heater null is off;
+Timestamp: Fri Dec 01 14:59:12 WET 2017; Message: Heater Aquecedor Quentinho da Sala is on;
+Timestamp: Fri Dec 01 14:59:12 WET 2017; Message: Heater Aquecedor Quentinho da Sala is off;

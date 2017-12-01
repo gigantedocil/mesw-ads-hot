@@ -8,55 +8,41 @@ package hot.device;
 import hot.domain.entities.Device;
 import hot.domain.entities.Heater;
 import hot.factories.DeviceFactory;
-import hot.logger.CsvFileLogger;
-import hot.logger.LogFileLogger;
-import hot.logger.TxtFileLogger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author joao
  */
-public class DeviceTest {
-
-    public DeviceTest() {
+public class DeviceFactoryTest {
+    
+    public DeviceFactoryTest() {
     }
-
+    
     @BeforeClass
     public static void setUpClass() {
     }
-
+    
     @AfterClass
     public static void tearDownClass() {
     }
-
+    
     @Before
     public void setUp() {
     }
-
+    
     @After
     public void tearDown() {
     }
 
     @Test
-    public void addDeviceObserverTest() {
-
-        Device heater = DeviceFactory.create("Heater");
-        
-        heater.setName("Aquecedor Quentinho da Sala");
-
-        heater.addObserver(LogFileLogger.getInstance());
-        
-        heater.addObserver(CsvFileLogger.getInstance());       
-        
-        heater.addObserver(TxtFileLogger.getInstance());
-
-        heater.setIsOn(true);
-
-        heater.setIsOn(false);
+    public void instantitateDeviceWithFactoryTest() {
+        Heater heater = (Heater) DeviceFactory.create("Heater");
+        assertTrue(heater instanceof Heater);
     }
 }
