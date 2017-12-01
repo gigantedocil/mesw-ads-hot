@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.domain.entities.house;
+package hot.domain.entities.device.commands;
 
 import hot.domain.entities.device.Device;
 
@@ -11,16 +11,16 @@ import hot.domain.entities.device.Device;
  *
  * @author joao
  */
-public class DeviceOnCommand implements Command {
-
+public class DeviceOffCommand implements Command{
+    
     Device device;
 
-    public DeviceOnCommand(Device device) {
+    public DeviceOffCommand(Device device) {
         this.device = device;
     }
 
     @Override
     public void execute() {
-        device.setIsOn(true);
+        device.setIsOn(false);
     }
 }

@@ -5,6 +5,7 @@
  */
 package hot.domain.entities.house;
 
+import hot.domain.entities.device.commands.Command;
 import hot.domain.entities.device.Device;
 import java.util.ArrayList;
 import java.util.List;

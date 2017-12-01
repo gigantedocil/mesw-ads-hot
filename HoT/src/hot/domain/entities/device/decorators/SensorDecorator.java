@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.domain.entities.device.devicedecorators;
+package hot.domain.entities.device.decorators;
 
 import hot.domain.entities.device.Device;
 
@@ -11,9 +11,15 @@ import hot.domain.entities.device.Device;
  *
  * @author joao
  */
-public class DeviceDecorator extends Device {        
+public class SensorDecorator extends Device {
     
+    private final Device device;
     
-     
+    public SensorDecorator(Device device) {
+        this.device = device;
+    }
     
+    public int getTemperature() {
+        return 0;
+    }       
 }
