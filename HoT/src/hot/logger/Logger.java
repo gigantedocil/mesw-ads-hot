@@ -5,30 +5,35 @@
  */
 package hot.logger;
 
+import hot.domain.entities.Device;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *
  * @author joao
  */
-public abstract class Logger implements Loggable {
+public abstract class Logger implements Loggable, Observer {
 
     protected String filePath;
-    private final String logName = "LogFile";
-    private Date currentDate;
-    private FileWriter out;
-    private File folder;
 
-    
+    private final String logName = "LogFile";
+
+    private Date currentDate;
+
+    private FileWriter out;
+
+    private File folder;
 
     /**
      * Constructor
      */
-    Logger() {                
+    Logger() {
 
         folder = this.createOrReadLogFolder(System.getProperty("user.dir"));
 
@@ -76,8 +81,8 @@ public abstract class Logger implements Loggable {
 
             out.write(
                     "Timestamp: "
-                    + currentDate.toString()                    
-                    + "; Message: "        
+                    + currentDate.toString()
+                    + "; Message: "
                     + message
                     + ";\n"
             );
@@ -138,7 +143,7 @@ public abstract class Logger implements Loggable {
         } catch (IOException e) {
             return null;
         }
-    }      
+    }
 
     /**
      * Verify the day of the file
@@ -165,7 +170,19 @@ public abstract class Logger implements Loggable {
         return dateFromFileReseted.equals(todayDateReseted);
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+
+        String status = (boolean) arg == true ? "on" : "off";
+
+        log(
+                ((Device) o).toString()
+                + " is "
+                + status
+        );
+    }
+
     public String getLogName() {
         return logName;
-    }   
+    }
 }

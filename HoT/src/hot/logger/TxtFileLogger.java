@@ -18,6 +18,9 @@ public class TxtFileLogger extends Logger {
 
     private static Logger instance;
 
+    private TxtFileLogger() {
+    }
+
     public static Logger getInstance() {
         if (instance == null) {
             instance = new TxtFileLogger();

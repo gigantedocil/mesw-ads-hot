@@ -10,6 +10,10 @@ package hot.domain.entities;
  * @author joao
  */
 public class Heater extends Device {
-    
-    
+
+    @Override
+    public String toString() {
+        return "Heater "
+                + getName();
+    }
 }

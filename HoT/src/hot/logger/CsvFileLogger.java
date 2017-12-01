@@ -9,14 +9,18 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Observable;
 
 /**
  *
  * @author joao
  */
 public class CsvFileLogger extends Logger {
-    
+
     private static Logger instance;
+
+    private CsvFileLogger() {
+    }
 
     public static Logger getInstance() {
         if (instance == null) {
@@ -32,5 +36,5 @@ public class CsvFileLogger extends Logger {
         cal.setTime(date);
         String finalLogname = super.getLogName() + '-' + dateFormat.format(cal.getTime()) + ".csv";
         return finalLogname;
-    }    
+    }
 }

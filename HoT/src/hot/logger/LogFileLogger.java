@@ -15,8 +15,11 @@ import java.util.Date;
  * @author joao
  */
 public class LogFileLogger extends Logger {
-    
+
     private static Logger instance;
+
+    private LogFileLogger() {
+    }
 
     public static Logger getInstance() {
         if (instance == null) {
@@ -32,5 +35,5 @@ public class LogFileLogger extends Logger {
         cal.setTime(date);
         String finalLogname = super.getLogName() + '-' + dateFormat.format(cal.getTime()) + ".log";
         return finalLogname;
-    }    
+    }
 }
