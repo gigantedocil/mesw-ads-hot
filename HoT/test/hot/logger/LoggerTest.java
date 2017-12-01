@@ -5,6 +5,8 @@
  */
 package hot.logger;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -42,8 +44,17 @@ public class LoggerTest {
      */
     @Test
     public void testLogger() {                        
-        Logger.getInstance().log("Test logging");
+        //Logger.getInstance().log("Test logging");
         
+        List<Logger> loggers = new ArrayList<Logger>() {{
+            add(LogFileLogger.getInstance());
+            add(CsvFileLogger.getInstance());
+            add(TxtFileLogger.getInstance());
+        }};                
+        
+        loggers.forEach((logger) -> {
+            logger.log("Testing this test for testing purposes");
+        }); 
         //TODO: open file check for string and assert
     }
     
@@ -53,8 +64,8 @@ public class LoggerTest {
     @Test
     public void testLoggerSingleton() {                                 
         assertEquals(
-                Logger.getInstance(), 
-                Logger.getInstance()
+                LogFileLogger.getInstance(), 
+                LogFileLogger.getInstance()
         );                
     }
     

@@ -8,8 +8,6 @@ package hot.logger;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -17,7 +15,7 @@ import java.util.Date;
  *
  * @author joao
  */
-public class Logger {
+public abstract class Logger implements Loggable {
 
     protected String filePath;
     private final String logName = "LogFile";
@@ -25,14 +23,7 @@ public class Logger {
     private FileWriter out;
     private File folder;
 
-    private static Logger instance;
-
-    public static Logger getInstance() {
-        if (instance == null) {
-            instance = new Logger();
-        }
-        return instance;
-    }
+    
 
     /**
      * Constructor
@@ -147,22 +138,7 @@ public class Logger {
         } catch (IOException e) {
             return null;
         }
-    }
-
-    /**
-     * Generate the file name format
-     *
-     * @param date
-     * @return
-     */
-    private String generatefileFormat(Date date) {
-
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        String finalLogname = logName + '-' + dateFormat.format(cal.getTime()) + ".log";
-        return finalLogname;
-    }
+    }      
 
     /**
      * Verify the day of the file
@@ -189,4 +165,7 @@ public class Logger {
         return dateFromFileReseted.equals(todayDateReseted);
     }
 
+    public String getLogName() {
+        return logName;
+    }   
 }
