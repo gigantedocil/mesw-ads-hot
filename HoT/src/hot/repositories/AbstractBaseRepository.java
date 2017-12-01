@@ -6,6 +6,7 @@
 package hot.repositories;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  */
 public abstract class AbstractBaseRepository<T> {
 
-    private ArrayList<T> repository;
+    private final List<T> repository = new ArrayList<>();
 
     public boolean add(T object) {
         repository.add(object);
@@ -30,7 +31,7 @@ public abstract class AbstractBaseRepository<T> {
         return repository.contains(object);
     }
 
-    public ArrayList<T> retrieveAll() {
+    public List<T> retrieveAll() {
         return repository;
     }
 

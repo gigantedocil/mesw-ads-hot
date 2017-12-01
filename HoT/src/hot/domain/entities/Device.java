@@ -5,9 +5,6 @@
  */
 package hot.domain.entities;
 
-import hot.logger.CsvFileLogger;
-import hot.logger.LogFileLogger;
-import hot.logger.TxtFileLogger;
 import java.util.Observable;
 
 /**
@@ -16,7 +13,7 @@ import java.util.Observable;
  */
 public abstract class Device extends Observable {
 
-    private String name;
+    private String name = "Device";
 
     private boolean isOn;
 

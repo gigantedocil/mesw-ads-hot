@@ -16,3 +16,6 @@ Timestamp: Fri Dec 01 14:58:10 WET 2017; Message: Heater null is on;
 Timestamp: Fri Dec 01 14:58:10 WET 2017; Message: Heater null is off;
 Timestamp: Fri Dec 01 14:59:12 WET 2017; Message: Heater Aquecedor Quentinho da Sala is on;
 Timestamp: Fri Dec 01 14:59:12 WET 2017; Message: Heater Aquecedor Quentinho da Sala is off;
+Timestamp: Fri Dec 01 15:10:55 WET 2017; Message: Heater Aquecedor Quentinho da Sala is on;
+Timestamp: Fri Dec 01 15:10:55 WET 2017; Message: Heater Aquecedor Quentinho da Sala is off;
+Timestamp: Fri Dec 01 15:10:55 WET 2017; Message: Testing this test for testing purposes;
