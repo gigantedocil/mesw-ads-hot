@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.domain.entities;
+package hot.domain.entities.device;
 
 import java.util.Observable;
 

@@ -5,8 +5,8 @@
  */
 package hot.factories;
 
-import hot.domain.entities.Device;
-import hot.domain.entities.NullDevice;
+import hot.domain.entities.device.Device;
+import hot.domain.entities.device.NullDevice;
 
 /**
  *

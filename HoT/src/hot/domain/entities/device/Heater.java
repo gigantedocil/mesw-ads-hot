@@ -3,13 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.domain.entities;
+package hot.domain.entities.device;
 
 /**
  *
  * @author joao
  */
-public class Refrigerator extends Device {
-    
-       
+public class Heater extends Device {
+
+    @Override
+    public String toString() {
+        return "Heater "
+                + getName();
+    }
 }

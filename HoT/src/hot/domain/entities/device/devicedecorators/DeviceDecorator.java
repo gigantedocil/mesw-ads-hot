@@ -3,13 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.domain.entities;
+package hot.domain.entities.device.devicedecorators;
+
+import hot.domain.entities.device.Device;
 
 /**
  *
  * @author joao
  */
-public class Oven extends Device {
+public class DeviceDecorator extends Device {        
     
+    
+     
     
 }

@@ -5,7 +5,7 @@
  */
 package hot.logger;
 
-import hot.domain.entities.Device;
+import hot.domain.entities.device.Device;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.domain.entities;
+package hot.facade;
 
 /**
  *
  * @author joao
  */
-public class AirConditioner extends Device {
+public class HotFacade {
     
-     
 }

@@ -6,8 +6,7 @@
 package hot;
 
 import gui.Home;
-import hot.domain.entities.Device;
-import hot.logger.Logger;
+import hot.domain.entities.device.Device;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
@@ -15,22 +14,19 @@ import java.util.ArrayList;
  *
  * @author joao
  */
-public class HoT {
+public class Hot {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        new HoT();
-        
-        //Logger
+        new Hot();
     }
 
-    public HoT() {
-        //Logger logger = Logger.getInstance();
-//        if (setLookAndFeel()) {
-//            initialize();
-//        }
+    public Hot() {
+        if (setLookAndFeel()) {
+            initialize();
+        }
     }
 
     private void initialize() {
@@ -52,13 +48,5 @@ public class HoT {
             return false;
         }
         return true;
-    }        
-
-    private void massiveShutdown(ArrayList<Device> todos) {
-//        todos.stream().map(x -> x.off()).collect(Collectors.toList());
-//
-//        todos.forEach((todo) -> {
-//            todo.off();
-//        });
-    }
+    }   
 }

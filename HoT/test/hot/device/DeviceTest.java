@@ -5,8 +5,8 @@
  */
 package hot.device;
 
-import hot.domain.entities.Device;
-import hot.domain.entities.Heater;
+import hot.domain.entities.device.Device;
+import hot.domain.entities.device.Heater;
 import hot.factories.DeviceFactory;
 import hot.logger.CsvFileLogger;
 import hot.logger.LogFileLogger;

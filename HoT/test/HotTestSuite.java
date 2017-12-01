@@ -26,7 +26,7 @@ import org.junit.runners.Suite;
     DeviceRepositoryTest.class,
     LoggerTest.class        
 })
-public class HoTTestSuite {
+public class HotTestSuite {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
