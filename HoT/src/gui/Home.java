@@ -6,8 +6,8 @@
 package gui;
 
 import hot.domain.entities.house.House;
-import hot.domain.entities.house.SwingHouseAdapter;
-import hot.factories.DeviceFactory;
+import hot.domain.entities.house.adapters.SwingHouseAdapter;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
 /**
@@ -27,9 +27,6 @@ public class Home extends javax.swing.JFrame {
 
         swingHouseAdapter = new SwingHouseAdapter(house);
 
-        // Teste
-        house.getDeviceRepository().add(DeviceFactory.create("Heater"));
-
         initComponents();
     }
 
@@ -44,17 +41,18 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         availableDevicesComboBox = new javax.swing.JComboBox<>();
+        roomsPanel = new javax.swing.JPanel();
+        roomsComboBox = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
         hotMenu = new javax.swing.JMenu();
+        createRoomMenuItem = new javax.swing.JMenuItem();
         createDeviceMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Available Devices"));
 
-        availableDevicesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(swingHouseAdapter.getDevices()));
+        availableDevicesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,19 +67,47 @@ public class Home extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(availableDevicesComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addComponent(availableDevicesComboBox)
                 .addContainerGap())
         );
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        roomsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Rooms"));
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        roomsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(swingHouseAdapter.getRooms()));
+        roomsComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roomsComboBoxActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout roomsPanelLayout = new javax.swing.GroupLayout(roomsPanel);
+        roomsPanel.setLayout(roomsPanelLayout);
+        roomsPanelLayout.setHorizontalGroup(
+            roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roomsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(roomsComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        roomsPanelLayout.setVerticalGroup(
+            roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roomsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(roomsComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         hotMenu.setText("HoT");
 
-        createDeviceMenuItem.setText("Create Device");
+        createRoomMenuItem.setText("Create Room");
+        createRoomMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createRoomMenuItemActionPerformed(evt);
+            }
+        });
+        hotMenu.add(createRoomMenuItem);
+
+        createDeviceMenuItem.setText("Add Device");
         createDeviceMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createDeviceMenuItemActionPerformed(evt);
@@ -99,14 +125,18 @@ public class Home extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(roomsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(roomsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -122,21 +152,44 @@ public class Home extends javax.swing.JFrame {
         };
     }//GEN-LAST:event_createDeviceMenuItemActionPerformed
 
+    private void createRoomMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createRoomMenuItemActionPerformed
+        new CreateRoomDialog(this, true) {
+            {
+                setVisible(true);
+            }
+        };
+    }//GEN-LAST:event_createRoomMenuItemActionPerformed
+
+    private void roomsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomsComboBoxActionPerformed
+        availableDevicesComboBox.setModel(
+                new DefaultComboBoxModel<>(
+                        swingHouseAdapter.getRoomDevices(
+                                (String) roomsComboBox.getSelectedItem()
+                        )
+                )
+        );
+    }//GEN-LAST:event_roomsComboBoxActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> availableDevicesComboBox;
     private javax.swing.JMenuItem createDeviceMenuItem;
+    private javax.swing.JMenuItem createRoomMenuItem;
     private javax.swing.JMenu hotMenu;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> roomsComboBox;
+    private javax.swing.JPanel roomsPanel;
     // End of variables declaration//GEN-END:variables
 
     public SwingHouseAdapter getSwingHouseAdapter() {
         return swingHouseAdapter;
     }
 
+    public JComboBox<String> getRoomsComboBox() {
+        return roomsComboBox;
+    }
+
     public JComboBox<String> getAvailableDevicesComboBox() {
         return availableDevicesComboBox;
-    }        
+    }
 }

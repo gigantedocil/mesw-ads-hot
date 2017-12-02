@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.logger;
+package hot.logger.concrete;
 
+import hot.logger.AbstractLogger;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -15,14 +16,14 @@ import java.util.Observable;
  *
  * @author joao
  */
-public class CsvFileLogger extends Logger {
+public class CsvFileLogger extends AbstractLogger {
 
-    private static Logger instance;
+    private static AbstractLogger instance;
 
     private CsvFileLogger() {
     }
 
-    public static Logger getInstance() {
+    public static AbstractLogger getInstance() {
         if (instance == null) {
             instance = new CsvFileLogger();
         }

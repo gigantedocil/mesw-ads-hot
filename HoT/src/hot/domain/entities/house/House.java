@@ -5,15 +5,14 @@
  */
 package hot.domain.entities.house;
 
-import hot.domain.entities.device.Device;
+import hot.domain.entities.room.Room;
 import hot.domain.entities.device.commands.DeviceOnCommand;
 import hot.domain.entities.device.commands.DeviceOffCommand;
-import hot.domain.entities.device.commands.Command;
-import hot.repositories.concrete.DeviceRepository;
-import hot.repositories.concrete.DeviceTypeRepository;
-import hot.repositories.concrete.RoomRepository;
+import hot.domain.entities.device.repositories.DeviceRepository;
+import hot.domain.entities.device.repositories.DeviceTypeRepository;
+import hot.domain.entities.room.repositories.RoomRepository;
 import java.util.ArrayList;
-import java.util.List;
+import hot.domain.entities.device.commands.ICommand;
 
 /**
  *
@@ -44,14 +43,14 @@ public class House {
 
     public void shutDownRoom(Room room) {
         room.getDevices().forEach((device) -> {
-            Command command = new DeviceOffCommand(device);
+            ICommand command = new DeviceOffCommand(device);
             room.massiveOperation(command);
         });
     }
 
     public void initializeRoom(Room room) {
         room.getDevices().forEach((device) -> {
-            Command command = new DeviceOnCommand(device);
+            ICommand command = new DeviceOnCommand(device);
             room.massiveOperation(command);
         });
     }

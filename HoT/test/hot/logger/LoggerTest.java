@@ -5,6 +5,9 @@
  */
 package hot.logger;
 
+import hot.logger.concrete.LogFileLogger;
+import hot.logger.concrete.TxtFileLogger;
+import hot.logger.concrete.CsvFileLogger;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
@@ -40,13 +43,13 @@ public class LoggerTest {
     }    
 
     /**
-     * Test of log method, of class Logger.
+     * Test of log method, of class AbstractLogger.
      */
     @Test
     public void testLogger() {                        
         //Logger.getInstance().log("Test logging");
         
-        List<Logger> loggers = new ArrayList<Logger>() {{
+        List<AbstractLogger> loggers = new ArrayList<AbstractLogger>() {{
             add(LogFileLogger.getInstance());
             add(CsvFileLogger.getInstance());
             add(TxtFileLogger.getInstance());
@@ -59,7 +62,7 @@ public class LoggerTest {
     }
     
     /**
-     * Test of log method, of class Logger.
+     * Test of log method, of class AbstractLogger.
      */
     @Test
     public void testLoggerSingleton() {                                 

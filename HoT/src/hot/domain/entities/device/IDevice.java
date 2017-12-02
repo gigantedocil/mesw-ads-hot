@@ -3,14 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.repositories.concrete;
-
-import hot.domain.entities.house.Room;
-import hot.repositories.AbstractBaseRepository;
+package hot.domain.entities.device;
 
 /**
  *
  * @author Me
  */
-public class RoomRepository extends AbstractBaseRepository<Room> {
+public interface IDevice {
+    
+    void init();
+
+    boolean isOn();
+
+    void setIsOn(boolean isOn);
+    
+    String getName();
+
+    void setName(String name);    
 }

@@ -32,7 +32,7 @@ public abstract class AbstractBaseRepository<T> implements IRepository<T> {
     @Override
     public boolean exists(T object) {
         return repository.contains(object);
-    }
+    }          
 
     @Override
     public List<T> retrieveAll() {

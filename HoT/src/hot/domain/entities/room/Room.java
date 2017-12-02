@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.domain.entities.house;
+package hot.domain.entities.room;
 
-import hot.domain.entities.device.commands.Command;
 import hot.domain.entities.device.Device;
 import java.util.ArrayList;
 import java.util.List;
+import hot.domain.entities.device.commands.ICommand;
 
 /**
  *
@@ -17,10 +17,10 @@ import java.util.List;
 public class Room {
 
     private String name;
-    
+
     private final List<Device> devices = new ArrayList<>();
 
-    public void massiveOperation(Command command) {        
+    public void massiveOperation(ICommand command) {
         command.execute();
     }
 
@@ -31,8 +31,17 @@ public class Room {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public boolean addDevice(Device device) {
+        return devices.add(device);
+    }
 
     public List<Device> getDevices() {
         return devices;
-    }        
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

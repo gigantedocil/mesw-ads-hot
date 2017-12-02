@@ -18,7 +18,7 @@ import java.util.Observer;
  *
  * @author joao
  */
-public abstract class Logger implements Loggable, Observer {
+public abstract class AbstractLogger implements ILogger, ILoggable, Observer {
 
     protected String filePath;
 
@@ -33,7 +33,7 @@ public abstract class Logger implements Loggable, Observer {
     /**
      * Constructor
      */
-    Logger() {
+    public AbstractLogger() {
 
         folder = this.createOrReadLogFolder(System.getProperty("user.dir"));
 
@@ -68,6 +68,7 @@ public abstract class Logger implements Loggable, Observer {
      *
      * @param message
      */
+    @Override
     public void log(String message) {
 
         Date todaysDate = new Date();

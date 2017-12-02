@@ -11,23 +11,36 @@ import java.util.Observable;
  *
  * @author joao
  */
-public abstract class Device extends Observable {
+public abstract class Device extends Observable implements IDevice {
 
     private String name = "Device";
 
     private boolean isOn;
 
+    @Override
     public final void init() {
     }
 
+    @Override
     public boolean isOn() {
         return isOn;
     }
 
+    @Override
     public void setIsOn(boolean isOn) {
         this.isOn = isOn;
 
         notifyDevice();
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
     private void notifyDevice() {
@@ -35,13 +48,5 @@ public abstract class Device extends Observable {
         setChanged();
 
         notifyObservers(isOn);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

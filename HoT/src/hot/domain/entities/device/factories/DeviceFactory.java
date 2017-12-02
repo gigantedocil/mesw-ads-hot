@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.factories;
+package hot.domain.entities.device.factories;
 
 import hot.domain.entities.device.Device;
 import hot.domain.entities.device.NullDevice;
@@ -30,7 +30,6 @@ public class DeviceFactory {
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             // TODO: Add to logger.
         }
-
         return device;
     }
 }

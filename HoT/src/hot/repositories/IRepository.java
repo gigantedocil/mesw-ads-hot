@@ -19,6 +19,8 @@ public interface IRepository <T> {
     boolean remove(T object);
 
     boolean exists(T object);
+    
+    T find(String objectName);
 
     List<T> retrieveAll();    
 }

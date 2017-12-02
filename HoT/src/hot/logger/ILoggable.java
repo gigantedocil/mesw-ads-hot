@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author joao
  */
-public interface Loggable {
+public interface ILoggable {
     
     
     

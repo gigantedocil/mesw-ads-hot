@@ -58,7 +58,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Create Device"/>
+            <TitledBorder title="Create Room"/>
           </Border>
         </Property>
       </Properties>
@@ -69,15 +69,9 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="deviceTypeComboBox" max="32767" attributes="0"/>
-                      <Component id="deviceNameTextField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="roomComboBox" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="deviceTypeLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="deviceNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="roomLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Component id="roomNameTextField" pref="318" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="deviceNameLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -89,59 +83,21 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="roomLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="roomComboBox" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                  <Component id="deviceTypeLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="deviceTypeComboBox" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="deviceNameLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="deviceNameTextField" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="68" max="32767" attributes="0"/>
+                  <Component id="roomNameTextField" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="168" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="deviceTypeLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Device Type:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="deviceTypeComboBox">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(swingHouseAdapter.getDeviceTypes())" type="code"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
         <Component class="javax.swing.JLabel" name="deviceNameLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Device Name:"/>
+            <Property name="text" type="java.lang.String" value="Room name:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="deviceNameTextField">
-        </Component>
-        <Component class="javax.swing.JLabel" name="roomLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Room"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="roomComboBox">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(swingHouseAdapter.getRooms())" type="code"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
+        <Component class="javax.swing.JTextField" name="roomNameTextField">
         </Component>
       </SubComponents>
     </Container>

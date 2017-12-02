@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.repositories.concrete;
+package hot.domain.entities.device.repositories;
 
 import hot.domain.entities.device.Device;
-import hot.factories.DeviceFactory;
+import hot.domain.entities.device.factories.DeviceFactory;
 import hot.repositories.IRepository;
 import java.io.File;
 import java.io.IOException;
@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -42,6 +40,11 @@ public class DeviceTypeRepository implements IRepository<String> {
     @Override
     public List<String> retrieveAll() {
         return new ArrayList<>(Arrays.asList(getAvailableDeviceTypes()));
+    }
+
+    @Override
+    public String find(String objectName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private String[] getAvailableDeviceTypes() {

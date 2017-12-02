@@ -6,10 +6,10 @@
 package hot.device;
 
 import hot.domain.entities.device.Device;
-import hot.factories.DeviceFactory;
-import hot.logger.CsvFileLogger;
-import hot.logger.LogFileLogger;
-import hot.logger.TxtFileLogger;
+import hot.domain.entities.device.factories.DeviceFactory;
+import hot.logger.concrete.CsvFileLogger;
+import hot.logger.concrete.LogFileLogger;
+import hot.logger.concrete.TxtFileLogger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

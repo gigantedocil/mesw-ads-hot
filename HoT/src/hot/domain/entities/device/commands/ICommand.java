@@ -9,7 +9,7 @@ package hot.domain.entities.device.commands;
  *
  * @author joao
  */
-public interface Command {
+public interface ICommand {
     
     void execute();
 }

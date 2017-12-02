@@ -11,7 +11,7 @@ import hot.domain.entities.device.Device;
  *
  * @author joao
  */
-public class DeviceOnCommand implements Command {
+public class DeviceOnCommand implements ICommand {
 
     Device device;
 
