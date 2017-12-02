@@ -14,6 +14,8 @@ import hot.domain.entities.device.NullDevice;
  */
 public class DeviceFactory {
 
+    public static final String DEVICES_PACKAGE_NAME = ".concrete";
+
     public static Device create(String deviceName) {
 
         Device device = new NullDevice();
@@ -21,7 +23,8 @@ public class DeviceFactory {
         try {
             return (Device) Class.forName(
                     Device.class.getPackage().getName()
-                    + ".concretedevices."
+                    + DEVICES_PACKAGE_NAME
+                    + "."
                     + deviceName
             ).newInstance();
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {

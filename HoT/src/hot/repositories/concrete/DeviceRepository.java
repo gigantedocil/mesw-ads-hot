@@ -3,18 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.domain.entities.device.concretedevices;
+package hot.repositories.concrete;
 
 import hot.domain.entities.device.Device;
+import hot.repositories.AbstractBaseRepository;
 
 /**
  *
  * @author joao
  */
-public class LightBulb extends Device {
-        
-    @Override
-    public String toString() {
-        return "LightBulb " + getName();
-    }
+public class DeviceRepository extends AbstractBaseRepository<Device> {
 }

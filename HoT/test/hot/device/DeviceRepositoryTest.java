@@ -7,7 +7,7 @@ package hot.device;
 
 import hot.domain.entities.device.Device;
 import hot.factories.DeviceFactory;
-import hot.repositories.DeviceRepository;
+import hot.repositories.concrete.DeviceRepository;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -6,6 +6,7 @@
 package hot;
 
 import gui.Home;
+import hot.domain.entities.house.House;
 import java.awt.EventQueue;
 
 /**
@@ -44,7 +45,7 @@ public class Hot {
 
     private void initialize() {
         EventQueue.invokeLater(() -> {
-            new Home().setVisible(true);
+            new Home(new House()).setVisible(true);
         });
     }
 }

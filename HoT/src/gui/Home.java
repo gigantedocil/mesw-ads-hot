@@ -5,16 +5,31 @@
  */
 package gui;
 
+import hot.domain.entities.house.House;
+import hot.domain.entities.house.SwingHouseAdapter;
+import hot.factories.DeviceFactory;
+import javax.swing.JComboBox;
+
 /**
  *
  * @author joao
  */
 public class Home extends javax.swing.JFrame {
 
+    private final SwingHouseAdapter swingHouseAdapter;
+
     /**
      * Creates new form Home
+     *
+     * @param house
      */
-    public Home() {
+    public Home(House house) {
+
+        swingHouseAdapter = new SwingHouseAdapter(house);
+
+        // Teste
+        house.getDeviceRepository().add(DeviceFactory.create("Heater"));
+
         initComponents();
     }
 
@@ -27,6 +42,8 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        availableDevicesComboBox = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -34,6 +51,27 @@ public class Home extends javax.swing.JFrame {
         createDeviceMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Available Devices"));
+
+        availableDevicesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(swingHouseAdapter.getDevices()));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(availableDevicesComboBox, 0, 348, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(availableDevicesComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -59,11 +97,17 @@ public class Home extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -71,18 +115,28 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createDeviceMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createDeviceMenuItemActionPerformed
-        new CreateDeviceDialog(this, true){
+        new CreateDeviceDialog(this, true) {
             {
                 setVisible(true);
             }
         };
     }//GEN-LAST:event_createDeviceMenuItemActionPerformed
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> availableDevicesComboBox;
     private javax.swing.JMenuItem createDeviceMenuItem;
     private javax.swing.JMenu hotMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    public SwingHouseAdapter getSwingHouseAdapter() {
+        return swingHouseAdapter;
+    }
+
+    public JComboBox<String> getAvailableDevicesComboBox() {
+        return availableDevicesComboBox;
+    }        
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.repositories;
+package hot.domain.entities.device.concrete;
 
 import hot.domain.entities.device.Device;
 
@@ -11,6 +11,10 @@ import hot.domain.entities.device.Device;
  *
  * @author joao
  */
-public class DeviceRepository extends AbstractBaseRepository<Device> {
-    
+public class AirConditioner extends Device {
+
+    @Override
+    public String toString() {
+        return "AirConditioner " + getName();
+    }
 }

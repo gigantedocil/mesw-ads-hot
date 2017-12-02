@@ -5,9 +5,13 @@
  */
 package hot.domain.entities.house;
 
+import hot.domain.entities.device.Device;
 import hot.domain.entities.device.commands.DeviceOnCommand;
 import hot.domain.entities.device.commands.DeviceOffCommand;
 import hot.domain.entities.device.commands.Command;
+import hot.repositories.concrete.DeviceRepository;
+import hot.repositories.concrete.DeviceTypeRepository;
+import hot.repositories.concrete.RoomRepository;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,15 +20,15 @@ import java.util.List;
  * @author joao
  */
 public class House {
+    
+    private final RoomRepository roomRepository = new RoomRepository();
 
-    private final List<Room> rooms = new ArrayList<>();
+    private final DeviceRepository deviceRepository = new DeviceRepository();
+    
+    private final DeviceTypeRepository deviceTypeRepository = new DeviceTypeRepository();    
 
     public House() {
-    }
-
-    public List<Room> getRooms() {
-        return rooms;
-    }
+    }   
 
     public void massiveShutdown(ArrayList<Room> rooms) {
         rooms.forEach((room) -> {
@@ -44,11 +48,23 @@ public class House {
             room.massiveOperation(command);
         });
     }
-    
+
     public void initializeRoom(Room room) {
         room.getDevices().forEach((device) -> {
             Command command = new DeviceOnCommand(device);
             room.massiveOperation(command);
         });
     }
+
+    public RoomRepository getRoomRepository() {
+        return roomRepository;
+    }
+
+    public DeviceRepository getDeviceRepository() {
+        return deviceRepository;
+    }
+
+    public DeviceTypeRepository getDeviceTypeRepository() {
+        return deviceTypeRepository;
+    }        
 }

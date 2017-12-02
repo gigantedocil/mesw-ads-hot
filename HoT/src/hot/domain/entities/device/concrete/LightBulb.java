@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.domain.entities.device.concretedevices;
+package hot.domain.entities.device.concrete;
 
 import hot.domain.entities.device.Device;
 
@@ -11,10 +11,10 @@ import hot.domain.entities.device.Device;
  *
  * @author joao
  */
-public class AirConditioner extends Device {
-
+public class LightBulb extends Device {
+        
     @Override
     public String toString() {
-        return "AirConditioner " + getName();
+        return "LightBulb " + getName();
     }
 }
