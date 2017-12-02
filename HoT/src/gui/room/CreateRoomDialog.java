@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.room;
 
+import gui.Home;
 import hot.domain.entities.house.adapters.SwingHouseAdapter;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 
 /**
  *
  * @author joao
  */
-public class CreateDeviceDialog extends javax.swing.JDialog {
+public class CreateRoomDialog extends javax.swing.JDialog {
 
     private final SwingHouseAdapter swingHouseAdapter;
 
@@ -25,7 +25,7 @@ public class CreateDeviceDialog extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public CreateDeviceDialog(Home parent, boolean modal) {
+    public CreateRoomDialog(Home parent, boolean modal) {
 
         super(parent, modal);
 
@@ -34,6 +34,8 @@ public class CreateDeviceDialog extends javax.swing.JDialog {
         this.parent = parent;
 
         initComponents();
+        
+        getRootPane().setDefaultButton(saveButton);
     }
 
     /**
@@ -46,28 +48,17 @@ public class CreateDeviceDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         createDevicePanel = new javax.swing.JPanel();
-        deviceTypeLabel = new javax.swing.JLabel();
-        deviceTypeComboBox = new javax.swing.JComboBox<>();
         deviceNameLabel = new javax.swing.JLabel();
-        deviceNameTextField = new javax.swing.JTextField();
-        roomLabel = new javax.swing.JLabel();
-        roomComboBox = new javax.swing.JComboBox<>();
+        roomNameTextField = new javax.swing.JTextField();
         cancelButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Create Room");
 
-        createDevicePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Create Device"));
+        createDevicePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Create Room"));
 
-        deviceTypeLabel.setText("Device Type:");
-
-        deviceTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(swingHouseAdapter.getDeviceTypes()));
-
-        deviceNameLabel.setText("Device Name:");
-
-        roomLabel.setText("Room");
-
-        roomComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(swingHouseAdapter.getRooms()));
+        deviceNameLabel.setText("Room name:");
 
         javax.swing.GroupLayout createDevicePanelLayout = new javax.swing.GroupLayout(createDevicePanel);
         createDevicePanel.setLayout(createDevicePanelLayout);
@@ -76,33 +67,19 @@ public class CreateDeviceDialog extends javax.swing.JDialog {
             .addGroup(createDevicePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(createDevicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deviceTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deviceNameTextField)
-                    .addComponent(roomComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(roomNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                     .addGroup(createDevicePanelLayout.createSequentialGroup()
-                        .addGroup(createDevicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(deviceTypeLabel)
-                            .addComponent(deviceNameLabel)
-                            .addComponent(roomLabel))
+                        .addComponent(deviceNameLabel)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         createDevicePanelLayout.setVerticalGroup(
             createDevicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createDevicePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(roomLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(roomComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(deviceTypeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deviceTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deviceNameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deviceNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addComponent(roomNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         cancelButton.setText("Cancel");
@@ -123,11 +100,11 @@ public class CreateDeviceDialog extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 198, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -138,12 +115,12 @@ public class CreateDeviceDialog extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(createDevicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(createDevicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveButton)
-                    .addComponent(cancelButton))
-                .addContainerGap())
+                    .addComponent(cancelButton)
+                    .addComponent(saveButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,18 +128,17 @@ public class CreateDeviceDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        swingHouseAdapter.addDevice(
-                (String) roomComboBox.getSelectedItem(),
-                (String) deviceTypeComboBox.getSelectedItem(),
-                deviceNameTextField.getText()
-        );
-        parent.getAvailableDevicesComboBox().setModel(
+        
+       swingHouseAdapter.addRoom(roomNameTextField.getText());
+        
+        parent.getRoomsComboBox().setModel(
                 new DefaultComboBoxModel<>(
-                        swingHouseAdapter.getRoomDevices(
-                                (String) parent.getRoomsComboBox().getSelectedItem()
-                        )
+                        swingHouseAdapter.getRooms()
                 )
         );
+
+        parent.getRoomsComboBox().setEnabled(true);
+        
         dispose();
     }//GEN-LAST:event_saveButtonActionPerformed
 
@@ -174,11 +150,7 @@ public class CreateDeviceDialog extends javax.swing.JDialog {
     private javax.swing.JButton cancelButton;
     private javax.swing.JPanel createDevicePanel;
     private javax.swing.JLabel deviceNameLabel;
-    private javax.swing.JTextField deviceNameTextField;
-    private javax.swing.JComboBox<String> deviceTypeComboBox;
-    private javax.swing.JLabel deviceTypeLabel;
-    private javax.swing.JComboBox<String> roomComboBox;
-    private javax.swing.JLabel roomLabel;
+    private javax.swing.JTextField roomNameTextField;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }
