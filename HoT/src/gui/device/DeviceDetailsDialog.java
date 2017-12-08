@@ -11,7 +11,11 @@ import hot.domain.entities.device.commands.DeviceOffCommand;
 import hot.domain.entities.device.commands.DeviceOnCommand;
 import hot.domain.entities.device.commands.ICommand;
 import hot.domain.entities.device.extensions.IActuator;
+import hot.domain.entities.device.extensions.ITemperatureChanger;
+import hot.domain.entities.device.extensions.ITemperatureSensor;
+import hot.domain.entities.device.extensions.ITimer;
 import hot.domain.entities.house.adapters.SwingHouseAdapter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,23 +42,95 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
 
         swingHouseAdapter = parent.getSwingHouseAdapter();
 
-        initComponents();
-
         this.device = device;
 
-        deviceNameTextField.setText((String) parent.getAvailableDevicesComboBox().getSelectedItem());
+        initComponents();
 
+        deviceNameTextField.setText((String) parent
+                .getAvailableDevicesComboBox()
+                .getSelectedItem());
+
+        toggleFields();
+
+        firstInit = true;
+    }
+
+    private void toggleFields() {
+
+        toggleActuatorFields();
+
+        toggleTemperatureSensorFields();
+
+        toggleTemperatureChangerFields();
+
+        toggleTimerFields();
+    }
+
+    private void toggleActuatorFields() {
         if (device instanceof IActuator) {
-                
             if (((IActuator) device).isOn()) {
-                turnOnDeviceToggleButton.doClick();
+                turnOnDeviceToggleButton.setText("On");
+                turnOnDeviceToggleButton.setSelected(true);
+            } else {
+                turnOnDeviceToggleButton.setText("Off");
+                turnOnDeviceToggleButton.setSelected(false);
             }
         } else {
             deviceNameTextField.setVisible(false);
             turnOnDeviceToggleButton.setVisible(false);
         }
+    }
 
-        firstInit = true;
+    private void toggleTemperatureSensorFields() {
+        if (device instanceof ITemperatureSensor) {
+            currentTemperatureTextField.setVisible(true);
+            celsiusDegreeLabel.setVisible(true);
+            if (((IActuator) device).isOn()) {
+                currentTemperatureTextField.setEnabled(true);
+                currentTemperatureTextField.setText(
+                        Double.toString(((ITemperatureSensor) device).getTemperature()));
+            } else {
+                currentTemperatureTextField.setText("");
+                currentTemperatureTextField.setEnabled(false);
+            }
+        } else {
+            currentTemperatureTextField.setVisible(false);
+            celsiusDegreeLabel.setVisible(false);
+        }
+    }
+
+    private void toggleTemperatureChangerFields() {
+        if (device instanceof ITemperatureChanger) {
+            changeTemperatureButton.setVisible(true);
+            if (((IActuator) device).isOn()) {
+                changeTemperatureButton.setEnabled(true);
+            } else {
+                changeTemperatureButton.setEnabled(false);
+            }
+        } else {
+            changeTemperatureButton.setVisible(false);
+        }
+    }
+
+    private void toggleTimerFields() {
+        if (device instanceof ITimer) {
+            timerLabel.setVisible(true);
+            timerField.setVisible(true);
+            secondsLabel.setVisible(true);
+            startTimerButton.setVisible(true);
+            if (((IActuator) device).isOn()) {
+                timerField.setEnabled(true);
+                startTimerButton.setEnabled(true);
+            } else {
+                timerField.setEnabled(false);
+                startTimerButton.setEnabled(false);
+            }
+        } else {
+            timerLabel.setVisible(false);
+            timerField.setVisible(false);
+            secondsLabel.setVisible(false);
+            startTimerButton.setVisible(false);
+        }
     }
 
     /**
@@ -66,51 +142,114 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        deviceDetailsPanel = new javax.swing.JPanel();
+        nameLabel = new javax.swing.JLabel();
         deviceNameTextField = new javax.swing.JTextField();
         turnOnDeviceToggleButton = new javax.swing.JToggleButton();
+        currentTemperatureLabel = new javax.swing.JLabel();
+        statusLabel = new javax.swing.JLabel();
+        currentTemperatureTextField = new javax.swing.JTextField();
+        celsiusDegreeLabel = new javax.swing.JLabel();
+        changeTemperatureButton = new javax.swing.JButton();
+        timerLabel = new javax.swing.JLabel();
+        startTimerButton = new javax.swing.JButton();
+        timerField = new javax.swing.JTextField();
+        secondsLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Device Details");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Device Details"));
+        deviceDetailsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Device Details"));
 
-        jLabel1.setText("Name:");
+        nameLabel.setText("Name:");
 
         deviceNameTextField.setEnabled(false);
 
-        turnOnDeviceToggleButton.setText("Turn On");
+        turnOnDeviceToggleButton.setText("Off");
         turnOnDeviceToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 turnOnDeviceToggleButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deviceNameTextField)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(turnOnDeviceToggleButton))
-                        .addGap(0, 262, Short.MAX_VALUE)))
+        currentTemperatureLabel.setText("Current Temperature:");
+
+        statusLabel.setText("Status:");
+
+        currentTemperatureTextField.setEnabled(false);
+
+        celsiusDegreeLabel.setText("ºC");
+
+        changeTemperatureButton.setText("Change Temperature");
+        changeTemperatureButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeTemperatureButtonActionPerformed(evt);
+            }
+        });
+
+        timerLabel.setText("Timer:");
+
+        startTimerButton.setText("Start Timer");
+
+        secondsLabel.setText("s");
+
+        javax.swing.GroupLayout deviceDetailsPanelLayout = new javax.swing.GroupLayout(deviceDetailsPanel);
+        deviceDetailsPanel.setLayout(deviceDetailsPanelLayout);
+        deviceDetailsPanelLayout.setHorizontalGroup(
+            deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deviceDetailsPanelLayout.createSequentialGroup()
+                .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deviceDetailsPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(deviceNameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(deviceDetailsPanelLayout.createSequentialGroup()
+                                .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameLabel)
+                                    .addComponent(statusLabel)
+                                    .addComponent(currentTemperatureLabel)
+                                    .addGroup(deviceDetailsPanelLayout.createSequentialGroup()
+                                        .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(currentTemperatureTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                                            .addComponent(timerField))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(celsiusDegreeLabel)
+                                            .addComponent(secondsLabel))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(changeTemperatureButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(startTimerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(timerLabel))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(turnOnDeviceToggleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
+        deviceDetailsPanelLayout.setVerticalGroup(
+            deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deviceDetailsPanelLayout.createSequentialGroup()
+                .addComponent(nameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deviceNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(turnOnDeviceToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 119, Short.MAX_VALUE))
+                .addComponent(statusLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(turnOnDeviceToggleButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(currentTemperatureLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(currentTemperatureTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(celsiusDegreeLabel)
+                    .addComponent(changeTemperatureButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(timerLabel)
+                .addGap(4, 4, 4)
+                .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(timerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(secondsLabel)
+                    .addComponent(startTimerButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,15 +258,15 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(deviceDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(deviceDetailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -135,29 +274,41 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void turnOnDeviceToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnOnDeviceToggleButtonActionPerformed
-        if (turnOnDeviceToggleButton.getText().equals("Turn On")) {
-            if (firstInit) {
-                ICommand command = new DeviceOnCommand(
-                        ((IActuator) device)
-                );
-                command.execute();
-            }
-            turnOnDeviceToggleButton.setText("Turn Off");
+        if (turnOnDeviceToggleButton.getText().equals("Off")) {
+            new DeviceOnCommand(((IActuator) device)).execute();            
         } else {
-            if (firstInit) {
-                ICommand command = new DeviceOffCommand(
-                        ((IActuator) device)
-                );
-                command.execute();
-            }
-            turnOnDeviceToggleButton.setText("Turn On");
+            new DeviceOffCommand(((IActuator) device)).execute();            
         }
+        toggleFields();
     }//GEN-LAST:event_turnOnDeviceToggleButtonActionPerformed
 
+    private void changeTemperatureButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeTemperatureButtonActionPerformed
+        double value;
+        do {
+            String temperature = JOptionPane.showInputDialog("Please input the desired temperature:");
+            try {
+                value = Double.parseDouble(temperature);
+            } catch (Exception e) {
+                value = -1;
+            }
+        } while (value < 0 || value > 80);
+        ((ITemperatureChanger) device).setTemperature(value);
+        currentTemperatureTextField.setText(Double.toString(((ITemperatureSensor) device).getTemperature()));
+    }//GEN-LAST:event_changeTemperatureButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel celsiusDegreeLabel;
+    private javax.swing.JButton changeTemperatureButton;
+    private javax.swing.JLabel currentTemperatureLabel;
+    private javax.swing.JTextField currentTemperatureTextField;
+    private javax.swing.JPanel deviceDetailsPanel;
     private javax.swing.JTextField deviceNameTextField;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel secondsLabel;
+    private javax.swing.JButton startTimerButton;
+    private javax.swing.JLabel statusLabel;
+    private javax.swing.JTextField timerField;
+    private javax.swing.JLabel timerLabel;
     private javax.swing.JToggleButton turnOnDeviceToggleButton;
     // End of variables declaration//GEN-END:variables
 }

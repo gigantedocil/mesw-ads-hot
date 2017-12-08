@@ -26,7 +26,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
+              <Component id="deviceDetailsPanel" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -35,14 +35,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="deviceDetailsPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="deviceDetailsPanel">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -55,16 +55,39 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="deviceNameTextField" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="turnOnDeviceToggleButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="deviceNameTextField" alignment="1" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="statusLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="currentTemperatureLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="currentTemperatureTextField" pref="102" max="32767" attributes="0"/>
+                                              <Component id="timerField" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="celsiusDegreeLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="secondsLabel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="changeTemperatureButton" max="32767" attributes="0"/>
+                                              <Component id="startTimerButton" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="timerLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="0" pref="262" max="32767" attributes="0"/>
                       </Group>
+                      <Component id="turnOnDeviceToggleButton" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -73,18 +96,36 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="deviceNameTextField" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="turnOnDeviceToggleButton" min="-2" pref="90" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="119" max="32767" attributes="0"/>
+                  <Component id="statusLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="turnOnDeviceToggleButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="currentTemperatureLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="currentTemperatureTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="celsiusDegreeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="changeTemperatureButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="timerLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="timerField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="secondsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="startTimerButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="nameLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Name:"/>
           </Properties>
@@ -96,11 +137,56 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="turnOnDeviceToggleButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Turn On"/>
+            <Property name="text" type="java.lang.String" value="Off"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="turnOnDeviceToggleButtonActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="currentTemperatureLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Current Temperature:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="statusLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Status:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="currentTemperatureTextField">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="celsiusDegreeLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#xba;C"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="changeTemperatureButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Change Temperature"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeTemperatureButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="timerLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Timer:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="startTimerButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Start Timer"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="timerField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="secondsLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="s"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

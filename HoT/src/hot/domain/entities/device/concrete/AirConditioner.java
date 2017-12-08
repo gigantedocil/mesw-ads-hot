@@ -7,6 +7,7 @@ package hot.domain.entities.device.concrete;
 
 import hot.domain.entities.device.Device;
 import hot.domain.entities.device.extensions.IActuator;
+import hot.domain.entities.device.extensions.ITemperatureChanger;
 import hot.domain.entities.device.extensions.ITemperatureSensor;
 import hot.domain.entities.device.extensions.concrete.Actuator;
 
@@ -14,11 +15,11 @@ import hot.domain.entities.device.extensions.concrete.Actuator;
  *
  * @author joao
  */
-public class AirConditioner extends Device implements IActuator, ITemperatureSensor {
+public class AirConditioner extends Device implements IActuator, ITemperatureSensor, ITemperatureChanger {
 
     private final Actuator actuator;          
     
-    private double temperature;
+    private double temperature = 22;
 
     public AirConditioner() {
         actuator = new Actuator();
@@ -50,6 +51,7 @@ public class AirConditioner extends Device implements IActuator, ITemperatureSen
         return temperature;
     }
     
+    @Override
     public void setTemperature(double temperature) {
         this.temperature = temperature;
     }

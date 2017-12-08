@@ -7,6 +7,7 @@ package hot.domain.entities.device.concrete;
 
 import hot.domain.entities.device.Device;
 import hot.domain.entities.device.extensions.IActuator;
+import hot.domain.entities.device.extensions.ITemperatureChanger;
 import hot.domain.entities.device.extensions.ITemperatureSensor;
 import hot.domain.entities.device.extensions.ITimer;
 import hot.domain.entities.device.extensions.concrete.Actuator;
@@ -16,13 +17,13 @@ import hot.domain.entities.device.extensions.concrete.DeviceTimer;
  *
  * @author joao
  */
-public class Oven extends Device implements IActuator, ITemperatureSensor, ITimer {
+public class Oven extends Device implements IActuator, ITemperatureSensor, ITimer, ITemperatureChanger {
 
     private final Actuator actuator;
 
     private final DeviceTimer timer;
 
-    private double temperature;
+    private double temperature = 0;
 
     public Oven() {
         actuator = new Actuator();
@@ -55,6 +56,7 @@ public class Oven extends Device implements IActuator, ITemperatureSensor, ITime
         return temperature;
     }
 
+    @Override
     public void setTemperature(double temperature) {
         this.temperature = temperature;
     }
