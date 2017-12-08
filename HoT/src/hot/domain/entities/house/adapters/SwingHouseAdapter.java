@@ -9,7 +9,13 @@ import hot.domain.entities.device.Device;
 import hot.domain.entities.device.factories.DeviceFactory;
 import hot.domain.entities.house.House;
 import hot.domain.entities.room.Room;
+import hot.logger.concrete.CsvFileLogger;
+import hot.logger.concrete.LogFileLogger;
+import hot.logger.concrete.TxtFileLogger;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Observer;
 import java.util.stream.Collectors;
 
 /**
@@ -19,6 +25,14 @@ import java.util.stream.Collectors;
 public class SwingHouseAdapter {
 
     private final House house;
+
+    private final Map<String, Observer> loggers = new HashMap<String, Observer>() {
+        {
+            put(".LOG", LogFileLogger.getInstance());
+            put(".TXT", TxtFileLogger.getInstance());
+            put(".CSV", CsvFileLogger.getInstance());
+        }
+    };
 
     public SwingHouseAdapter(House house) {
         this.house = house;
@@ -36,16 +50,20 @@ public class SwingHouseAdapter {
         });
     }
 
-    public boolean addDevice(String roomName, String deviceType, String deviceName) {
+    public boolean addDevice(String roomName, String deviceType, String deviceName, List<String> chosenLoggers) {
 
         Device device = DeviceFactory.create(deviceType);
 
         device.setName(deviceName);
 
+        chosenLoggers.forEach((chosenLogger) -> {
+            device.addObserver(loggers.get(chosenLogger));
+        });
+
         return house.getRoomRepository().find(roomName).addDevice(device);
     }
 
-    public String[] getRoomDevices(String roomName) {        
+    public String[] getRoomDevices(String roomName) {
         List<String> aux = house
                 .getRoomRepository()
                 .find(roomName)

@@ -11,10 +11,8 @@ import hot.domain.entities.device.commands.DeviceOffCommand;
 import hot.domain.entities.device.repositories.DeviceRepository;
 import hot.domain.entities.device.repositories.DeviceTypeRepository;
 import hot.domain.entities.room.repositories.RoomRepository;
-import java.util.ArrayList;
 import hot.domain.entities.device.commands.ICommand;
 import hot.domain.entities.device.extensions.IActuator;
-import java.util.List;
 
 /**
  *
@@ -31,14 +29,14 @@ public class House {
     public House() {
     }   
 
-    public void massiveShutdown(List<Room> rooms) {
-        rooms.forEach((room) -> {
+    public void massiveShutdown() {
+        roomRepository.retrieveAll().forEach((room) -> {
             shutDownRoom(room);
         });
     }
 
-    public void massiveInitialization(List<Room> rooms) {
-        rooms.forEach((room) -> {
+    public void massiveInitialization() {
+        roomRepository.retrieveAll().forEach((room) -> {
             initializeRoom(room);
         });
     }

@@ -35,6 +35,10 @@ public class Room {
     public boolean addDevice(Device device) {
         return devices.add(device);
     }
+    
+    public boolean removeDevice(Device device) {
+        return devices.remove(device);
+    }
 
     public List<Device> getDevices() {
         return devices;

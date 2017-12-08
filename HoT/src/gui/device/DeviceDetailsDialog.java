@@ -6,6 +6,11 @@
 package gui.device;
 
 import gui.Home;
+import hot.domain.entities.device.Device;
+import hot.domain.entities.device.commands.DeviceOffCommand;
+import hot.domain.entities.device.commands.DeviceOnCommand;
+import hot.domain.entities.device.commands.ICommand;
+import hot.domain.entities.device.extensions.IActuator;
 import hot.domain.entities.house.adapters.SwingHouseAdapter;
 
 /**
@@ -13,23 +18,43 @@ import hot.domain.entities.house.adapters.SwingHouseAdapter;
  * @author Me
  */
 public class DeviceDetailsDialog extends javax.swing.JDialog {
-    
+
     private final SwingHouseAdapter swingHouseAdapter;
+
+    private final Device device;
+
+    private final boolean firstInit;
 
     /**
      * Creates new form DeviceDetailsDialog
+     *
      * @param parent
      * @param modal
+     * @param device
      */
-    public DeviceDetailsDialog(Home parent, boolean modal) {
-        
+    public DeviceDetailsDialog(Home parent, boolean modal, Device device) {
+
         super(parent, modal);
-        
+
         swingHouseAdapter = parent.getSwingHouseAdapter();
-                       
+
         initComponents();
-        
+
+        this.device = device;
+
         deviceNameTextField.setText((String) parent.getAvailableDevicesComboBox().getSelectedItem());
+
+        if (device instanceof IActuator) {
+                
+            if (((IActuator) device).isOn()) {
+                turnOnDeviceToggleButton.doClick();
+            }
+        } else {
+            deviceNameTextField.setVisible(false);
+            turnOnDeviceToggleButton.setVisible(false);
+        }
+
+        firstInit = true;
     }
 
     /**
@@ -44,6 +69,7 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         deviceNameTextField = new javax.swing.JTextField();
+        turnOnDeviceToggleButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Device Details");
@@ -54,6 +80,13 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
 
         deviceNameTextField.setEnabled(false);
 
+        turnOnDeviceToggleButton.setText("Turn On");
+        turnOnDeviceToggleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                turnOnDeviceToggleButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -61,10 +94,12 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deviceNameTextField)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 317, Short.MAX_VALUE))
-                    .addComponent(deviceNameTextField))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(turnOnDeviceToggleButton))
+                        .addGap(0, 262, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -73,7 +108,9 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deviceNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 215, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(turnOnDeviceToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 119, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -96,9 +133,31 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void turnOnDeviceToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnOnDeviceToggleButtonActionPerformed
+        if (turnOnDeviceToggleButton.getText().equals("Turn On")) {
+            if (firstInit) {
+                ICommand command = new DeviceOnCommand(
+                        ((IActuator) device)
+                );
+                command.execute();
+            }
+            turnOnDeviceToggleButton.setText("Turn Off");
+        } else {
+            if (firstInit) {
+                ICommand command = new DeviceOffCommand(
+                        ((IActuator) device)
+                );
+                command.execute();
+            }
+            turnOnDeviceToggleButton.setText("Turn On");
+        }
+    }//GEN-LAST:event_turnOnDeviceToggleButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField deviceNameTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JToggleButton turnOnDeviceToggleButton;
     // End of variables declaration//GEN-END:variables
 }
