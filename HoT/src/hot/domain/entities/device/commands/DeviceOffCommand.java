@@ -5,7 +5,7 @@
  */
 package hot.domain.entities.device.commands;
 
-import hot.domain.entities.device.Device;
+import hot.domain.entities.device.extensions.IActuator;
 
 /**
  *
@@ -13,14 +13,14 @@ import hot.domain.entities.device.Device;
  */
 public class DeviceOffCommand implements ICommand{
     
-    Device device;
+    private final IActuator device;
 
-    public DeviceOffCommand(Device device) {
+    public DeviceOffCommand(IActuator device) {
         this.device = device;
     }
 
     @Override
     public void execute() {
-        device.setIsOn(false);
+        device.turnOff();
     }
 }

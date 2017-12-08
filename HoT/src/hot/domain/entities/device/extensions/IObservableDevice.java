@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.logger;
+package hot.domain.entities.device.extensions;
 
-import java.util.Date;
+import hot.domain.entities.device.Device;
 
 /**
  *
  * @author joao
  */
-public interface ILoggable {        
+public interface IObservableDevice {
+
+    void registerObservable(Device device);
     
-    String generatefileFormat(Date date);
-    
+    void notifyDevice();
+
 }

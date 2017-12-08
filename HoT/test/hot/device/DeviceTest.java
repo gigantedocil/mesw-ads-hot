@@ -5,7 +5,8 @@
  */
 package hot.device;
 
-import hot.domain.entities.device.Device;
+import hot.domain.entities.device.concrete.LightBulb;
+import hot.domain.entities.device.concrete.Oven;
 import hot.domain.entities.device.factories.DeviceFactory;
 import hot.logger.concrete.CsvFileLogger;
 import hot.logger.concrete.LogFileLogger;
@@ -44,18 +45,34 @@ public class DeviceTest {
     @Test
     public void addDeviceObserverTest() {
 
-        Device heater = DeviceFactory.create("Heater");
+        LightBulb lightBulb = (LightBulb) DeviceFactory.create("LightBulb");
 
-        heater.setName("Aquecedor Quentinho da Sala");
+        lightBulb.setName("Lampadazinha da Sala");
 
-        heater.addObserver(LogFileLogger.getInstance());
+        lightBulb.addObserver(LogFileLogger.getInstance());
 
-        heater.addObserver(CsvFileLogger.getInstance());
+        lightBulb.addObserver(CsvFileLogger.getInstance());
 
-        heater.addObserver(TxtFileLogger.getInstance());
+        lightBulb.addObserver(TxtFileLogger.getInstance());
 
-        heater.setIsOn(true);
+        lightBulb.turnOn();
+    }
 
-        heater.setIsOn(false);
+    @Test
+    public void deviceTimerTest() {
+
+        Oven oven = (Oven) DeviceFactory.create("Oven");
+        
+        oven.addObserver(LogFileLogger.getInstance());
+
+        oven.addObserver(CsvFileLogger.getInstance());
+
+        oven.addObserver(TxtFileLogger.getInstance());
+               
+        oven.setTemperature(50);
+        
+        oven.startTimer(10);
+        
+        int a = 0;
     }
 }

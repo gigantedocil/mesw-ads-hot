@@ -12,12 +12,10 @@ package hot.domain.entities.device;
 public interface IDevice {
     
     void init();
-
-    boolean isOn();
-
-    void setIsOn(boolean isOn);
     
     String getName();
 
     void setName(String name);    
+    
+    void setStatusChanged();
 }
