@@ -63,6 +63,8 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
         toggleTemperatureChangerFields();
 
         toggleTimerFields();
+        
+        //pack();
     }
 
     private void toggleActuatorFields() {
@@ -84,6 +86,7 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
         if (device instanceof ITemperatureSensor) {
             currentTemperatureTextField.setVisible(true);
             celsiusDegreeLabel.setVisible(true);
+            currentTemperatureLabel.setVisible(true);
             if (((IActuator) device).isOn()) {
                 currentTemperatureTextField.setEnabled(true);
                 currentTemperatureTextField.setText(
@@ -95,6 +98,7 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
         } else {
             currentTemperatureTextField.setVisible(false);
             celsiusDegreeLabel.setVisible(false);
+            currentTemperatureLabel.setVisible(false);
         }
     }
 

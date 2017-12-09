@@ -179,7 +179,7 @@ public class CreateDeviceDialog extends javax.swing.JDialog {
         swingHouseAdapter.addDevice(
                 (String) roomComboBox.getSelectedItem(),
                 (String) deviceTypeComboBox.getSelectedItem(),
-                deviceNameTextField.getText(),
+                deviceNameTextField.getText().split(" ")[0],
                 logsList.getSelectedValuesList()
         );
         parent.getAvailableDevicesComboBox().setModel(

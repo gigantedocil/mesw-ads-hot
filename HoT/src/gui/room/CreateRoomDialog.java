@@ -129,7 +129,7 @@ public class CreateRoomDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        swingHouseAdapter.addRoom(roomNameTextField.getText());
+        swingHouseAdapter.addRoom(roomNameTextField.getText().split(" ")[0]);
         parent.getRoomsComboBox().setModel(
                 new DefaultComboBoxModel<>(
                         swingHouseAdapter.getRooms()
