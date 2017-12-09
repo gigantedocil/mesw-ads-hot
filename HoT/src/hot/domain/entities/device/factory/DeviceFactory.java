@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hot.domain.entities.device.factories;
+package hot.domain.entities.device.factory;
 
 import hot.domain.entities.device.Device;
 import hot.domain.entities.device.NullDevice;

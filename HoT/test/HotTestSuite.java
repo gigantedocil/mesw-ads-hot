@@ -5,7 +5,6 @@
  */
 
 import hot.device.DeviceFactoryTest;
-import hot.device.DeviceRepositoryTest;
 import hot.device.DeviceTest;
 import hot.logger.LoggerTest;
 import org.junit.After;
@@ -23,7 +22,6 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
     DeviceTest.class,
     DeviceFactoryTest.class,
-    DeviceRepositoryTest.class,
     LoggerTest.class
 })
 public class HotTestSuite {

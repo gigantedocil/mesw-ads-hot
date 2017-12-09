@@ -6,7 +6,7 @@
 package hot.domain.entities.house.adapters;
 
 import hot.domain.entities.device.Device;
-import hot.domain.entities.device.factories.DeviceFactory;
+import hot.domain.entities.device.factory.DeviceFactory;
 import hot.domain.entities.house.House;
 import hot.domain.entities.room.Room;
 import hot.logger.concrete.CsvFileLogger;

@@ -6,7 +6,7 @@
 package hot.domain.entities.room.repositories;
 
 import hot.domain.entities.room.Room;
-import hot.repositories.AbstractBaseRepository;
+import hot.repository.AbstractBaseRepository;
 
 /**
  *

@@ -7,7 +7,7 @@ package hot.device;
 
 import hot.domain.entities.device.concrete.LightBulb;
 import hot.domain.entities.device.concrete.Oven;
-import hot.domain.entities.device.factories.DeviceFactory;
+import hot.domain.entities.device.factory.DeviceFactory;
 import hot.logger.concrete.CsvFileLogger;
 import hot.logger.concrete.LogFileLogger;
 import hot.logger.concrete.TxtFileLogger;

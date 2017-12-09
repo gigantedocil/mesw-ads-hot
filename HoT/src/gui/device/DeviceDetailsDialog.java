@@ -9,7 +9,6 @@ import gui.Home;
 import hot.domain.entities.device.Device;
 import hot.domain.entities.device.commands.DeviceOffCommand;
 import hot.domain.entities.device.commands.DeviceOnCommand;
-import hot.domain.entities.device.commands.ICommand;
 import hot.domain.entities.device.extensions.IActuator;
 import hot.domain.entities.device.extensions.ITemperatureChanger;
 import hot.domain.entities.device.extensions.ITemperatureSensor;
@@ -119,11 +118,11 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
             secondsLabel.setVisible(true);
             startTimerButton.setVisible(true);
             if (((IActuator) device).isOn()) {
-                timerField.setEnabled(true);
-                startTimerButton.setEnabled(true);
+                //timerField.setEnabled(true);
+                //startTimerButton.setEnabled(true);
             } else {
-                timerField.setEnabled(false);
-                startTimerButton.setEnabled(false);
+                //timerField.setEnabled(false);
+                //startTimerButton.setEnabled(false);
             }
         } else {
             timerLabel.setVisible(false);
@@ -191,6 +190,11 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
         timerLabel.setText("Timer:");
 
         startTimerButton.setText("Start Timer");
+        startTimerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startTimerButtonActionPerformed(evt);
+            }
+        });
 
         secondsLabel.setText("s");
 
@@ -275,9 +279,9 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
 
     private void turnOnDeviceToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnOnDeviceToggleButtonActionPerformed
         if (turnOnDeviceToggleButton.getText().equals("Off")) {
-            new DeviceOnCommand(((IActuator) device)).execute();            
+            new DeviceOnCommand(((IActuator) device)).execute();
         } else {
-            new DeviceOffCommand(((IActuator) device)).execute();            
+            new DeviceOffCommand(((IActuator) device)).execute();
         }
         toggleFields();
     }//GEN-LAST:event_turnOnDeviceToggleButtonActionPerformed
@@ -295,6 +299,26 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
         ((ITemperatureChanger) device).setTemperature(value);
         currentTemperatureTextField.setText(Double.toString(((ITemperatureSensor) device).getTemperature()));
     }//GEN-LAST:event_changeTemperatureButtonActionPerformed
+
+    private void startTimerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startTimerButtonActionPerformed
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                ((ITimer) device).startTimer(Integer.parseInt(timerField.getText()));
+                turnOnDeviceToggleButton.setText("On");
+                turnOnDeviceToggleButton.setSelected(true);
+                while (((IActuator) device).isOn()) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                    }
+                }
+                turnOnDeviceToggleButton.setText("Off");
+                turnOnDeviceToggleButton.setSelected(false);
+            }
+        };
+        thread.start();
+    }//GEN-LAST:event_startTimerButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel celsiusDegreeLabel;

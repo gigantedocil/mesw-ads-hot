@@ -6,7 +6,7 @@
 package hot.device;
 
 import hot.domain.entities.device.concrete.Heater;
-import hot.domain.entities.device.factories.DeviceFactory;
+import hot.domain.entities.device.factory.DeviceFactory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

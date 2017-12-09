@@ -12,7 +12,7 @@ import hot.domain.entities.device.concrete.LightBulb;
 import hot.domain.entities.device.concrete.Oven;
 import hot.domain.entities.device.concrete.Refrigerator;
 import hot.domain.entities.device.extensions.IActuator;
-import hot.domain.entities.device.factories.DeviceFactory;
+import hot.domain.entities.device.factory.DeviceFactory;
 import hot.domain.entities.house.House;
 import hot.domain.entities.room.Room;
 import java.util.ArrayList;

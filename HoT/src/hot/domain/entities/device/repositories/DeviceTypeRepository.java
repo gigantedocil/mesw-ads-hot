@@ -6,8 +6,8 @@
 package hot.domain.entities.device.repositories;
 
 import hot.domain.entities.device.Device;
-import hot.domain.entities.device.factories.DeviceFactory;
-import hot.repositories.IRepository;
+import hot.domain.entities.device.factory.DeviceFactory;
+import hot.repository.IRepository;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;

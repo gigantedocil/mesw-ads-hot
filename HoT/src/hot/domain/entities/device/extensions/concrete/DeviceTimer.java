@@ -30,7 +30,6 @@ public class DeviceTimer implements ITimer, Serializable {
             @Override
             public void run() {
                 device.turnOff();
-                System.out.println("Success y'all");
             }
         }, delay * 1000);
     }
