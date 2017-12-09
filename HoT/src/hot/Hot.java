@@ -44,8 +44,8 @@ public class Hot {
     }
 
     private void initialize() {
-        EventQueue.invokeLater(() -> {
+        EventQueue.invokeLater(() -> {            
             new Home(new House()).setVisible(true);
-        });
+        });                
     }
 }

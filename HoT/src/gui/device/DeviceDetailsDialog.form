@@ -4,6 +4,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="Device Details"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -55,42 +56,40 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <Component id="deviceNameTextField" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="statusLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="currentTemperatureLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="timerLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="currentTemperatureTextField" pref="102" max="32767" attributes="0"/>
+                              <Component id="timerField" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="deviceNameTextField" alignment="1" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="statusLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="currentTemperatureLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="currentTemperatureTextField" pref="102" max="32767" attributes="0"/>
-                                              <Component id="timerField" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="celsiusDegreeLabel" min="-2" max="-2" attributes="0"/>
-                                              <Component id="secondsLabel" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="changeTemperatureButton" max="32767" attributes="0"/>
-                                              <Component id="startTimerButton" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="timerLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="celsiusDegreeLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="secondsLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="changeTemperatureButton" pref="180" max="32767" attributes="0"/>
+                              <Component id="startTimerButton" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="turnOnDeviceToggleButton" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
+              <Component id="turnOnDeviceToggleButton" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">

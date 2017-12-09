@@ -9,12 +9,14 @@ import hot.domain.entities.device.Device;
 import hot.domain.entities.device.extensions.IActuator;
 import hot.domain.entities.device.extensions.ITemperatureSensor;
 import hot.domain.entities.device.extensions.concrete.Actuator;
+import java.io.Serializable;
 
 /**
  *
  * @author joao
  */
-public class Refrigerator extends Device implements IActuator, ITemperatureSensor {
+public class Refrigerator extends Device 
+        implements IActuator, ITemperatureSensor, Serializable {
 
     private final Actuator actuator;
 

@@ -9,12 +9,13 @@ import hot.domain.entities.device.Device;
 import java.util.ArrayList;
 import java.util.List;
 import hot.domain.entities.device.commands.ICommand;
+import java.io.Serializable;
 
 /**
  *
  * @author joao
  */
-public class Room {
+public class Room implements Serializable {
 
     private String name;
 

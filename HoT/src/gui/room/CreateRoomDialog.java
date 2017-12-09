@@ -34,7 +34,7 @@ public class CreateRoomDialog extends javax.swing.JDialog {
         this.parent = parent;
 
         initComponents();
-        
+
         getRootPane().setDefaultButton(saveButton);
     }
 
@@ -55,6 +55,7 @@ public class CreateRoomDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Create Room");
+        setResizable(false);
 
         createDevicePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Create Room"));
 
@@ -128,17 +129,13 @@ public class CreateRoomDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        
-       swingHouseAdapter.addRoom(roomNameTextField.getText());
-        
+        swingHouseAdapter.addRoom(roomNameTextField.getText());
         parent.getRoomsComboBox().setModel(
                 new DefaultComboBoxModel<>(
                         swingHouseAdapter.getRooms()
                 )
         );
-
         parent.getRoomsComboBox().setEnabled(true);
-        
         dispose();
     }//GEN-LAST:event_saveButtonActionPerformed
 

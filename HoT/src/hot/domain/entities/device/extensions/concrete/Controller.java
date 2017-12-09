@@ -6,11 +6,12 @@
 package hot.domain.entities.device.extensions.concrete;
 
 import hot.domain.entities.device.extensions.IController;
+import java.io.Serializable;
 
 /**
  *
  * @author joao
  */
-public class Controller implements IController {
+public class Controller implements IController, Serializable {
     
 }

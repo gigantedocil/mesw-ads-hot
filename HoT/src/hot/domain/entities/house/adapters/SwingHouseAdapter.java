@@ -43,11 +43,11 @@ public class SwingHouseAdapter {
     }
 
     public boolean addRoom(String roomName) {
-        return house.getRoomRepository().add(new Room() {
-            {
-                setName(roomName);
-            }
-        });
+        Room room = new Room();        
+        
+        room.setName(roomName);
+        
+        return house.getRoomRepository().add(room);
     }
 
     public boolean addDevice(String roomName, String deviceType, String deviceName, List<String> chosenLoggers) {
@@ -80,14 +80,7 @@ public class SwingHouseAdapter {
         List<String> aux = house.getRoomRepository().retrieveAll().stream().map(r -> r.toString()).collect(Collectors.toList());
 
         return aux.toArray(new String[aux.size()]);
-    }
-
-    public String[] getDevices() {
-
-        List<String> aux = house.getDeviceRepository().retrieveAll().stream().map(d -> d.toString()).collect(Collectors.toList());
-
-        return aux.toArray(new String[aux.size()]);
-    }
+    }    
 
     public String[] getDeviceTypes() {
 

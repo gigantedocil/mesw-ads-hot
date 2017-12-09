@@ -7,6 +7,7 @@ package hot.domain.entities.device.extensions.concrete;
 
 import hot.domain.entities.device.extensions.IActuator;
 import hot.domain.entities.device.extensions.ITimer;
+import java.io.Serializable;
 import java.util.TimerTask;
 import java.util.Timer;
 
@@ -14,7 +15,7 @@ import java.util.Timer;
  *
  * @author joao
  */
-public class DeviceTimer implements ITimer {
+public class DeviceTimer implements ITimer, Serializable {
 
     private final IActuator device;
 

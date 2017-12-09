@@ -10,12 +10,14 @@ import hot.domain.entities.device.extensions.IActuator;
 import hot.domain.entities.device.extensions.ITemperatureChanger;
 import hot.domain.entities.device.extensions.ITemperatureSensor;
 import hot.domain.entities.device.extensions.concrete.Actuator;
+import java.io.Serializable;
 
 /**
  *
  * @author joao
  */
-public class AirConditioner extends Device implements IActuator, ITemperatureSensor, ITemperatureChanger {
+public class AirConditioner extends Device 
+        implements IActuator, ITemperatureSensor, ITemperatureChanger, Serializable {
 
     private final Actuator actuator;          
     

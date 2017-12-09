@@ -9,20 +9,21 @@ import hot.domain.entities.device.Device;
 import hot.domain.entities.device.extensions.IActuator;
 import hot.domain.entities.device.extensions.ITemperatureSensor;
 import hot.domain.entities.device.extensions.concrete.Actuator;
+import java.io.Serializable;
 
 /**
  *
  * @author joao
  */
-public class Heater extends Device implements IActuator, ITemperatureSensor {
-        
-    private final Actuator actuator;          
-    
+public class Heater extends Device implements IActuator, ITemperatureSensor, Serializable {
+
+    private final Actuator actuator;
+
     private double temperature;
 
     public Heater() {
         actuator = new Actuator();
-        actuator.registerObservable(this);        
+        actuator.registerObservable(this);
     }
 
     @Override
@@ -49,7 +50,7 @@ public class Heater extends Device implements IActuator, ITemperatureSensor {
     public double getTemperature() {
         return temperature;
     }
-    
+
     public void setTemperature(double temperature) {
         this.temperature = temperature;
     }

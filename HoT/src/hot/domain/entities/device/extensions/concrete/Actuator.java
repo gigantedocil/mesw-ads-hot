@@ -8,12 +8,13 @@ package hot.domain.entities.device.extensions.concrete;
 import hot.domain.entities.device.Device;
 import hot.domain.entities.device.extensions.IActuator;
 import hot.domain.entities.device.extensions.IObservableDevice;
+import java.io.Serializable;
 
 /**
  *
  * @author joao
  */
-public class Actuator implements IActuator, IObservableDevice {
+public class Actuator implements IActuator, IObservableDevice, Serializable {
 
     private boolean isOn;
 

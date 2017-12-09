@@ -8,19 +8,20 @@ package hot.domain.entities.device.concrete;
 import hot.domain.entities.device.Device;
 import hot.domain.entities.device.extensions.IActuator;
 import hot.domain.entities.device.extensions.concrete.Actuator;
+import java.io.Serializable;
 
 /**
  *
  * @author joao
  */
-public class LightBulb extends Device implements IActuator { // TODO: Add EnergyConsumptionSensor
+public class LightBulb extends Device implements IActuator, Serializable { // TODO: Add EnergyConsumptionSensor
 
     private final Actuator actuator;
 
     public LightBulb() {
         actuator = new Actuator();
-        actuator.registerObservable(this);       
-    }        
+        actuator.registerObservable(this);
+    }
 
     @Override
     public String toString() {

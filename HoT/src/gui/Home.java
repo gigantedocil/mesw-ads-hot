@@ -12,6 +12,7 @@ import hot.domain.entities.device.Device;
 import hot.domain.entities.house.House;
 import hot.domain.entities.house.adapters.SwingHouseAdapter;
 import hot.domain.entities.room.Room;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -31,6 +32,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home(House house) {
 
+        //house.loadSession();
         swingHouseAdapter = new SwingHouseAdapter(house);
 
         initComponents();
@@ -45,26 +47,34 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        housePanel = new javax.swing.JPanel();
         shutdownHouseButton = new javax.swing.JButton();
         initHouseButton = new javax.swing.JButton();
         roomsPanel = new javax.swing.JPanel();
         roomsComboBox = new javax.swing.JComboBox<>();
         initRoomButton = new javax.swing.JButton();
         shutdownRoomButton = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        availableDevicesComboBox = new javax.swing.JComboBox<>();
+        devicesPanel = new javax.swing.JPanel();
         deviceDetailsButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        devicesComboBox = new javax.swing.JComboBox<>();
+        deleteRoomButton = new javax.swing.JButton();
+        deleteRoomsButton = new javax.swing.JButton();
+        hotMenuBar = new javax.swing.JMenuBar();
         hotMenu = new javax.swing.JMenu();
         createRoomMenuItem = new javax.swing.JMenuItem();
         createDeviceMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HoT");
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("House"));
+        housePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("House"));
 
         shutdownHouseButton.setText("Shutdown House");
         shutdownHouseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -104,10 +114,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Available Devices"));
-
-        availableDevicesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>());
-        availableDevicesComboBox.setEnabled(false);
+        devicesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Devices"));
 
         deviceDetailsButton.setText("Device Details");
         deviceDetailsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -116,38 +123,42 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        deleteButton.setText("Delete");
+        deleteButton.setText("Delete Device");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(availableDevicesComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(deviceDetailsButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(availableDevicesComboBox)
+        devicesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>());
+        devicesComboBox.setEnabled(false);
+
+        javax.swing.GroupLayout devicesPanelLayout = new javax.swing.GroupLayout(devicesPanel);
+        devicesPanel.setLayout(devicesPanelLayout);
+        devicesPanelLayout.setHorizontalGroup(
+            devicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(devicesComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(devicesPanelLayout.createSequentialGroup()
+                .addComponent(deviceDetailsButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deleteButton)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(deviceDetailsButton)
-                        .addContainerGap())))
+                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+        devicesPanelLayout.setVerticalGroup(
+            devicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, devicesPanelLayout.createSequentialGroup()
+                .addComponent(devicesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(devicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deviceDetailsButton)
+                    .addComponent(deleteButton)))
+        );
+
+        deleteRoomButton.setText("Delete Room");
+        deleteRoomButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteRoomButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout roomsPanelLayout = new javax.swing.GroupLayout(roomsPanel);
         roomsPanel.setLayout(roomsPanelLayout);
@@ -155,55 +166,66 @@ public class Home extends javax.swing.JFrame {
             roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roomsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(roomsComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(roomsPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(10, Short.MAX_VALUE))
-                    .addGroup(roomsPanelLayout.createSequentialGroup()
-                        .addComponent(initRoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(shutdownRoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(devicesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(roomsPanelLayout.createSequentialGroup()
+                .addComponent(deleteRoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(roomsComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(roomsPanelLayout.createSequentialGroup()
+                .addComponent(initRoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(shutdownRoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         roomsPanelLayout.setVerticalGroup(
             roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roomsPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(roomsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(roomsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(initRoomButton)
                     .addComponent(shutdownRoomButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deleteRoomButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(devicesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(initHouseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(shutdownHouseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(roomsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        deleteRoomsButton.setText("Delete Rooms");
+        deleteRoomsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteRoomsButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout housePanelLayout = new javax.swing.GroupLayout(housePanel);
+        housePanel.setLayout(housePanelLayout);
+        housePanelLayout.setHorizontalGroup(
+            housePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(housePanelLayout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addComponent(roomsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, housePanelLayout.createSequentialGroup()
+                .addGroup(housePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(deleteRoomsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                    .addComponent(initHouseButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(shutdownHouseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        housePanelLayout.setVerticalGroup(
+            housePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, housePanelLayout.createSequentialGroup()
+                .addGroup(housePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(initHouseButton)
                     .addComponent(shutdownHouseButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteRoomsButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(roomsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(244, 244, 244))
         );
 
         hotMenu.setText("HoT");
@@ -224,9 +246,9 @@ public class Home extends javax.swing.JFrame {
         });
         hotMenu.add(createDeviceMenuItem);
 
-        jMenuBar1.add(hotMenu);
+        hotMenuBar.add(hotMenu);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(hotMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -234,14 +256,14 @@ public class Home extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(housePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(housePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -257,7 +279,12 @@ public class Home extends javax.swing.JFrame {
                 }
             };
         } else {
-            JOptionPane.showMessageDialog(this, "There are no rooms!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(
+                    this,
+                    "There are no rooms!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
         }
     }//GEN-LAST:event_createDeviceMenuItemActionPerformed
 
@@ -270,24 +297,29 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_createRoomMenuItemActionPerformed
 
     private void roomsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomsComboBoxActionPerformed
-        availableDevicesComboBox.setModel(
+        devicesComboBox.setModel(
                 new DefaultComboBoxModel<>(
                         swingHouseAdapter.getRoomDevices(
                                 (String) roomsComboBox.getSelectedItem()
                         )
                 )
         );
+        if (devicesComboBox.getSelectedItem() == null) {
+            devicesComboBox.setEnabled(false);
+        } else {
+            devicesComboBox.setEnabled(true);
+        }
     }//GEN-LAST:event_roomsComboBoxActionPerformed
 
     private void deviceDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deviceDetailsButtonActionPerformed
-        if (availableDevicesComboBox.getSelectedItem() != null) {
+        if (devicesComboBox.getSelectedItem() != null) {
             Device selectedDevice = swingHouseAdapter
                     .getHouse()
                     .getRoomRepository()
                     .find((String) roomsComboBox.getSelectedItem())
                     .getDevices()
                     .stream()
-                    .filter(d -> d.getName().equals(((String) availableDevicesComboBox.getSelectedItem()).split(" ")[1]))
+                    .filter(d -> d.getName().equals(((String) devicesComboBox.getSelectedItem()).split(" ")[1]))
                     .findFirst()
                     .get();
             new DeviceDetailsDialog(this, true, selectedDevice) {
@@ -301,64 +333,206 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_deviceDetailsButtonActionPerformed
 
     private void initHouseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initHouseButtonActionPerformed
+        if (devicesComboBox.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "There are no rooms!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
         swingHouseAdapter.getHouse().massiveInitialization();
+        JOptionPane.showMessageDialog(this, "The house has been fully initialized.");
     }//GEN-LAST:event_initHouseButtonActionPerformed
 
     private void shutdownHouseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shutdownHouseButtonActionPerformed
+        if (devicesComboBox.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "There are no rooms!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
         swingHouseAdapter.getHouse().massiveShutdown();
+        JOptionPane.showMessageDialog(this, "The house has been fully shutdown.");
     }//GEN-LAST:event_shutdownHouseButtonActionPerformed
 
     private void initRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initRoomButtonActionPerformed
+        if (devicesComboBox.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "There are no rooms!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
         swingHouseAdapter.getHouse().initializeRoom(
                 swingHouseAdapter
                         .getHouse()
                         .getRoomRepository()
                         .find((String) roomsComboBox.getSelectedItem())
         );
+        JOptionPane.showMessageDialog(this, "The room has been fully initialized.");
     }//GEN-LAST:event_initRoomButtonActionPerformed
 
     private void shutdownRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shutdownRoomButtonActionPerformed
+        if (devicesComboBox.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "There are no rooms!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
         swingHouseAdapter.getHouse().shutDownRoom(
                 swingHouseAdapter
                         .getHouse()
                         .getRoomRepository()
                         .find((String) roomsComboBox.getSelectedItem())
         );
+        JOptionPane.showMessageDialog(this, "The room has been fully shutdown.");
     }//GEN-LAST:event_shutdownRoomButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        Room room = swingHouseAdapter
-                .getHouse()
-                .getRoomRepository()
-                .find((String) roomsComboBox.getSelectedItem());
-        Device selectedDevice = room
-                .getDevices()
-                .stream()
-                .filter(d -> d.getName().equals(((String) availableDevicesComboBox.getSelectedItem()).split(" ")[1]))
-                .findFirst()
-                .get();
-        room.removeDevice(selectedDevice);
-        availableDevicesComboBox.setModel(
-                new DefaultComboBoxModel<>(
-                        swingHouseAdapter.getRoomDevices(
-                                (String) roomsComboBox.getSelectedItem()
-                        )
-                )
+        if (devicesComboBox.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "There are no devices!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+        int response = JOptionPane.showConfirmDialog(
+                this,
+                "Are you sure you want to delete this device?",
+                "Delete Device",
+                JOptionPane.YES_NO_OPTION
         );
+        if (response == 0) {
+            Room room = swingHouseAdapter
+                    .getHouse()
+                    .getRoomRepository()
+                    .find((String) roomsComboBox.getSelectedItem());
+            Device selectedDevice = room
+                    .getDevices()
+                    .stream()
+                    .filter(d -> d.getName().equals(((String) devicesComboBox.getSelectedItem()).split(" ")[1]))
+                    .findFirst()
+                    .get();
+            room.removeDevice(selectedDevice);
+            devicesComboBox.setModel(
+                    new DefaultComboBoxModel<>(
+                            swingHouseAdapter.getRoomDevices(
+                                    (String) roomsComboBox.getSelectedItem()
+                            )
+                    )
+            );
+            if (devicesComboBox.getSelectedItem() == null) {
+                devicesComboBox.setEnabled(false);
+            }
+        }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        //swingHouseAdapter.getHouse().saveSession();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void deleteRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRoomButtonActionPerformed
+        if (roomsComboBox.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "There are no rooms!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+        int response = JOptionPane.showConfirmDialog(
+                this,
+                "Are you sure you want to delete this room?\n"
+                + "Deleting this room will also delete all of its devices.",
+                "Delete Device",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (response == 0) {
+            Room room = swingHouseAdapter
+                    .getHouse()
+                    .getRoomRepository()
+                    .find((String) roomsComboBox.getSelectedItem());
+            swingHouseAdapter
+                    .getHouse()
+                    .getRoomRepository().remove(room);
+            roomsComboBox.setModel(
+                    new DefaultComboBoxModel<>(
+                            swingHouseAdapter.getRooms()
+                    )
+            );
+            if (roomsComboBox.getSelectedItem() == null) {
+                roomsComboBox.setEnabled(false);
+                devicesComboBox.setEnabled(false);
+            } else {
+                devicesComboBox.setModel(
+                        new DefaultComboBoxModel<>(
+                                swingHouseAdapter.getRoomDevices(
+                                        (String) roomsComboBox.getSelectedItem()
+                                )
+                        )
+                );
+                if (swingHouseAdapter.getRoomDevices((String) roomsComboBox.getSelectedItem()).length == 0) {
+                    devicesComboBox.setEnabled(false);
+                } else {
+                    devicesComboBox.setEnabled(true);
+                }
+            }
+        }
+    }//GEN-LAST:event_deleteRoomButtonActionPerformed
+
+    private void deleteRoomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRoomsButtonActionPerformed
+        if (devicesComboBox.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "There are no rooms!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+        int response = JOptionPane.showConfirmDialog(
+                this,
+                "Are you sure you want to delete all rooms?\n"
+                + "Deleting all rooms will also delete all of their devices.",
+                "Delete Device",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (response == 0) {
+            ((ArrayList<Room>) swingHouseAdapter.getHouse().getRoomRepository().retrieveAll()).clear();
+            devicesComboBox.setEnabled(false);
+            devicesComboBox.setModel(new DefaultComboBoxModel<>());
+            roomsComboBox.setEnabled(false);            
+            roomsComboBox.setModel(new DefaultComboBoxModel<>());
+        }
+    }//GEN-LAST:event_deleteRoomsButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> availableDevicesComboBox;
     private javax.swing.JMenuItem createDeviceMenuItem;
     private javax.swing.JMenuItem createRoomMenuItem;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JButton deleteRoomButton;
+    private javax.swing.JButton deleteRoomsButton;
     private javax.swing.JButton deviceDetailsButton;
+    private javax.swing.JComboBox<String> devicesComboBox;
+    private javax.swing.JPanel devicesPanel;
     private javax.swing.JMenu hotMenu;
+    private javax.swing.JMenuBar hotMenuBar;
+    private javax.swing.JPanel housePanel;
     private javax.swing.JButton initHouseButton;
     private javax.swing.JButton initRoomButton;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JComboBox<String> roomsComboBox;
     private javax.swing.JPanel roomsPanel;
     private javax.swing.JButton shutdownHouseButton;
@@ -374,6 +548,6 @@ public class Home extends javax.swing.JFrame {
     }
 
     public JComboBox<String> getAvailableDevicesComboBox() {
-        return availableDevicesComboBox;
+        return devicesComboBox;
     }
 }

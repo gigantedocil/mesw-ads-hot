@@ -12,12 +12,14 @@ import hot.domain.entities.device.extensions.ITemperatureSensor;
 import hot.domain.entities.device.extensions.ITimer;
 import hot.domain.entities.device.extensions.concrete.Actuator;
 import hot.domain.entities.device.extensions.concrete.DeviceTimer;
+import java.io.Serializable;
 
 /**
  *
  * @author joao
  */
-public class Oven extends Device implements IActuator, ITemperatureSensor, ITimer, ITemperatureChanger {
+public class Oven extends Device
+        implements IActuator, ITemperatureSensor, ITimer, ITemperatureChanger, Serializable {
 
     private final Actuator actuator;
 

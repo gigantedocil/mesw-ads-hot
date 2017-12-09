@@ -158,6 +158,7 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Device Details");
+        setResizable(false);
 
         deviceDetailsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Device Details"));
 
@@ -198,32 +199,31 @@ public class DeviceDetailsDialog extends javax.swing.JDialog {
         deviceDetailsPanelLayout.setHorizontalGroup(
             deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(deviceDetailsPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(deviceDetailsPanelLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(deviceNameTextField)
+                        .addContainerGap())
+                    .addGroup(deviceDetailsPanelLayout.createSequentialGroup()
                         .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(deviceNameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(deviceDetailsPanelLayout.createSequentialGroup()
-                                .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nameLabel)
-                                    .addComponent(statusLabel)
-                                    .addComponent(currentTemperatureLabel)
-                                    .addGroup(deviceDetailsPanelLayout.createSequentialGroup()
-                                        .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(currentTemperatureTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                                            .addComponent(timerField))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(celsiusDegreeLabel)
-                                            .addComponent(secondsLabel))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(changeTemperatureButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(startTimerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addComponent(timerLabel))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(turnOnDeviceToggleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                            .addComponent(nameLabel)
+                            .addComponent(statusLabel)
+                            .addComponent(currentTemperatureLabel)
+                            .addComponent(timerLabel))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(deviceDetailsPanelLayout.createSequentialGroup()
+                        .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(currentTemperatureTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                            .addComponent(timerField))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(celsiusDegreeLabel)
+                            .addComponent(secondsLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(changeTemperatureButton, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addComponent(startTimerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+            .addComponent(turnOnDeviceToggleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         deviceDetailsPanelLayout.setVerticalGroup(
             deviceDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
