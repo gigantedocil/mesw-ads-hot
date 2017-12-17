@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class DeviceFactoryTest {
     

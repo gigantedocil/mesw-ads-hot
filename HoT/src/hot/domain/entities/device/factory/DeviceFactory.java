@@ -10,7 +10,7 @@ import hot.domain.entities.device.NullDevice;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class DeviceFactory {
 

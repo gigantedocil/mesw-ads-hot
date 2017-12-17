@@ -13,7 +13,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class Heater extends Device implements IActuator, ITemperatureSensor, Serializable {
 

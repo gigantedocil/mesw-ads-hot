@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class Controller implements IController, Serializable {
     

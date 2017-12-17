@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class Actuator implements IActuator, IObservableDevice, Serializable {
 

@@ -14,7 +14,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class AirConditioner extends Device 
         implements IActuator, ITemperatureSensor, ITemperatureChanger, Serializable {

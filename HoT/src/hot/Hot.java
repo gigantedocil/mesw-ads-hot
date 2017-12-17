@@ -11,7 +11,7 @@ import java.awt.EventQueue;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class Hot {
 
@@ -22,7 +22,7 @@ public class Hot {
         new Hot();
     }
 
-    public Hot() {
+    public Hot() {               
         if (setLookAndFeel()) {
             initialize();
         }

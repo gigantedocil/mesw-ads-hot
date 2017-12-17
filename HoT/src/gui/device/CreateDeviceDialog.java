@@ -8,10 +8,11 @@ package gui.device;
 import gui.Home;
 import hot.domain.entities.house.adapters.SwingHouseAdapter;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class CreateDeviceDialog extends javax.swing.JDialog {
 
@@ -34,9 +35,9 @@ public class CreateDeviceDialog extends javax.swing.JDialog {
         this.parent = parent;
 
         initComponents();
-        
+
         getRootPane().setDefaultButton(saveButton);
-        
+
         deviceNameTextField.requestFocus();
     }
 
@@ -95,8 +96,8 @@ public class CreateDeviceDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(createDevicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(roomComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deviceTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(deviceNameTextField)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(createDevicePanelLayout.createSequentialGroup()
                         .addGroup(createDevicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(roomLabel)
@@ -104,7 +105,7 @@ public class CreateDeviceDialog extends javax.swing.JDialog {
                             .addComponent(deviceNameLabel)
                             .addComponent(logsLabel))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(deviceTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         createDevicePanelLayout.setVerticalGroup(
@@ -211,4 +212,8 @@ public class CreateDeviceDialog extends javax.swing.JDialog {
     private javax.swing.JLabel roomLabel;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
+
+    public JComboBox<String> getDeviceTypeComboBox() {
+        return deviceTypeComboBox;
+    }
 }

@@ -16,7 +16,7 @@ import java.util.Observer;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public abstract class AbstractLogger implements ILogger, ILoggable, Observer {
 

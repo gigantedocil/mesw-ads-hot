@@ -11,7 +11,7 @@ import javax.swing.DefaultComboBoxModel;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class CreateRoomDialog extends javax.swing.JDialog {
 

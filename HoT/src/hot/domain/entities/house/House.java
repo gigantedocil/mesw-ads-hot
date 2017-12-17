@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class House {
 

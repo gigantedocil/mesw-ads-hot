@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author Me
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  * @param <T>
  */
 public interface IRepository <T> {

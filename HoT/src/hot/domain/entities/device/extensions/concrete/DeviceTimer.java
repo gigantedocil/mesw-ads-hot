@@ -13,7 +13,7 @@ import java.util.Timer;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class DeviceTimer implements ITimer, Serializable {
 

@@ -7,7 +7,7 @@ package hot.logger;
 
 /**
  *
- * @author Me
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public interface ILogger {
 

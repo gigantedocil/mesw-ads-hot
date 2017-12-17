@@ -9,7 +9,7 @@ import hot.domain.entities.device.Device;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public interface IObservableDevice {
 

@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

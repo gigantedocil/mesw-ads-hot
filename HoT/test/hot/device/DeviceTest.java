@@ -19,7 +19,7 @@ import org.junit.Test;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class DeviceTest {
 

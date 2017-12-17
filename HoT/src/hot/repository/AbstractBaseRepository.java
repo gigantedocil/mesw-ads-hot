@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  * @param <T>
  */
 public abstract class AbstractBaseRepository<T> implements IRepository<T> {

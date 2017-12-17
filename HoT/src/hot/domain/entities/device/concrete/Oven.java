@@ -16,7 +16,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class Oven extends Device
         implements IActuator, ITemperatureSensor, ITimer, ITemperatureChanger, Serializable {

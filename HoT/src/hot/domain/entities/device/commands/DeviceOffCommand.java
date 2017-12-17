@@ -9,7 +9,7 @@ import hot.domain.entities.device.extensions.IActuator;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class DeviceOffCommand implements ICommand{
     

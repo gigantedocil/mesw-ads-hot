@@ -7,7 +7,7 @@ package hot.domain.entities.device;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class NullDevice extends Device {
 }

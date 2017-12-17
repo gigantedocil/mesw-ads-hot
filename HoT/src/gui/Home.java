@@ -5,6 +5,7 @@
  */
 package gui;
 
+import gui.device.AddDeviceFileChooserDialog;
 import gui.room.CreateRoomDialog;
 import gui.device.CreateDeviceDialog;
 import gui.device.DeviceDetailsDialog;
@@ -19,7 +20,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class Home extends javax.swing.JFrame {
 
@@ -64,6 +65,7 @@ public class Home extends javax.swing.JFrame {
         hotMenu = new javax.swing.JMenu();
         createRoomMenuItem = new javax.swing.JMenuItem();
         createDeviceMenuItem = new javax.swing.JMenuItem();
+        newDeviceMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HoT");
@@ -245,6 +247,14 @@ public class Home extends javax.swing.JFrame {
             }
         });
         hotMenu.add(createDeviceMenuItem);
+
+        newDeviceMenuItem.setText("New Device");
+        newDeviceMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newDeviceMenuItemActionPerformed(evt);
+            }
+        });
+        hotMenu.add(newDeviceMenuItem);
 
         hotMenuBar.add(hotMenu);
 
@@ -519,6 +529,14 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteRoomsButtonActionPerformed
 
+    private void newDeviceMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDeviceMenuItemActionPerformed
+        new AddDeviceFileChooserDialog(this, true) {
+            {
+                setVisible(true);
+            }
+        };     
+    }//GEN-LAST:event_newDeviceMenuItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem createDeviceMenuItem;
     private javax.swing.JMenuItem createRoomMenuItem;
@@ -533,6 +551,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel housePanel;
     private javax.swing.JButton initHouseButton;
     private javax.swing.JButton initRoomButton;
+    private javax.swing.JMenuItem newDeviceMenuItem;
     private javax.swing.JComboBox<String> roomsComboBox;
     private javax.swing.JPanel roomsPanel;
     private javax.swing.JButton shutdownHouseButton;

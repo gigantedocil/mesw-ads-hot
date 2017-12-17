@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 /**
  *
- * @author Me
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class SwingHouseAdapter {
 

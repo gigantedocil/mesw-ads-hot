@@ -10,7 +10,7 @@ import hot.repository.AbstractBaseRepository;
 
 /**
  *
- * @author Me
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class RoomRepository extends AbstractBaseRepository<Room> {
 

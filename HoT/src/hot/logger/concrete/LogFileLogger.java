@@ -13,7 +13,7 @@ import java.util.Date;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class LogFileLogger extends AbstractLogger {
 

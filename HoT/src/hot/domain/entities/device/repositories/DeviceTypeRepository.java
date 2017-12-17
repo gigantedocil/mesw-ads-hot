@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  *
- * @author Me
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class DeviceTypeRepository implements IRepository<String> {
 

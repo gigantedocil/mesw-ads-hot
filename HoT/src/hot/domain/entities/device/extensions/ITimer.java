@@ -7,7 +7,7 @@ package hot.domain.entities.device.extensions;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public interface ITimer {
     

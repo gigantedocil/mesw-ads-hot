@@ -9,7 +9,7 @@ import java.util.Observable;
 
 /**
  *
- * @author joao
+ * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public abstract class Device extends Observable implements IDevice {
 
