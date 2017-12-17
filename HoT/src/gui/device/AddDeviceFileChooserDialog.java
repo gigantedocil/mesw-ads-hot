@@ -70,9 +70,13 @@ public class AddDeviceFileChooserDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deviceFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deviceFileChooserActionPerformed
-        copyFile();
-        dispose();
-        JOptionPane.showMessageDialog(this, "New device succesfully added!");
+        if (evt.getActionCommand().equals("CancelSelection")) {
+            dispose();
+        } else {
+            copyFile();
+            dispose();
+            JOptionPane.showMessageDialog(this, "New device succesfully added!");
+        }
     }//GEN-LAST:event_deviceFileChooserActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
