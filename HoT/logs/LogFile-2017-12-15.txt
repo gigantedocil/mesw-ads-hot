@@ -1,0 +1,2 @@
+Timestamp: Fri Dec 15 15:48:10 WET 2017; Message: AirConditioner Ar is on;
+Timestamp: Fri Dec 15 15:48:12 WET 2017; Message: AirConditioner Ar is off;
