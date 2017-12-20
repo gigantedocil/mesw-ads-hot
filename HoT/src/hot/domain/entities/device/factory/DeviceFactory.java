@@ -18,7 +18,7 @@ public class DeviceFactory {
 
     public static Device create(String deviceName) {
 
-        Device device = new NullDevice();
+        Device device = NullDevice.getInstance();
 
         try {
             return (Device) Class.forName(

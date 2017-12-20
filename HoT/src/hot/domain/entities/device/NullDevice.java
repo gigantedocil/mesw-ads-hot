@@ -10,4 +10,16 @@ package hot.domain.entities.device;
  * @author João, Rafael, Adélia, Leonardo, Raquel, Guilherme, Bruno, Pedro
  */
 public class NullDevice extends Device {
+    
+    private static Device instance;
+
+    private NullDevice() {
+    }
+
+    public static Device getInstance() {
+        if (instance == null) {
+            instance = new NullDevice();
+        }
+        return instance;
+    }
 }
